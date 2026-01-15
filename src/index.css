@@ -4,7 +4,7 @@
   --clr-text-primary: var(--clr-neutral-black);
   --clr-border: var(--clr-neutral-black);
   --clr-surface-primary: var(--clr-neutral-off-white);
-  --clr-accent-orange: hsla(28, 62%, 61%, 1);
+  --clr-accent-orange: hsla(11, 99%, 60%, 1);
 }
 
 @font-face {
@@ -70,7 +70,7 @@ figure,
 blockquote,
 dl,
 dd {
-  margin-block-end: 0;
+  margin-block: 0;
 }
 
 ul {
@@ -83,6 +83,8 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size-adjust: 0.52;
   background-color: var(--clr-surface-primary);
+  margin: 0;
+  overflow-x: hidden;
 }
 
 h1,
@@ -126,6 +128,7 @@ button {
   border: none;
   cursor: pointer;
   text-transform: uppercase;
+  padding: 0;
 }
 
 input,
