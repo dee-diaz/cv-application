@@ -3,7 +3,7 @@
   --clr-neutral-off-white: hsl(0, 0%, 92%);
   --clr-text-primary: var(--clr-neutral-black);
   --clr-border: var(--clr-neutral-black);
-  --clr-surface-primary: var(--clr-neutral-white);
+  --clr-surface-primary: var(--clr-neutral-off-white);
   --clr-accent-orange: hsla(28, 62%, 61%, 1);
 }
 
