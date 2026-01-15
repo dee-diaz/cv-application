@@ -1,3 +1,12 @@
+:root {
+  --clr-neutral-black: hsl(0, 0%, 2%);
+  --clr-neutral-off-white: hsl(0, 0%, 92%);
+  --clr-text-primary: var(--clr-neutral-black);
+  --clr-border: var(--clr-neutral-black);
+  --clr-surface-primary: var(--clr-neutral-white);
+  --clr-accent-orange: hsla(28, 62%, 61%, 1);
+}
+
 *,
 *::before,
 *::after {
