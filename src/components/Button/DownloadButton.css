@@ -1,0 +1,11 @@
+.btn-download {
+  width: 15.875rem;
+  height: 4rem;
+  border-right: 1px solid #060606;
+  border-bottom: 1px solid #060606;
+  background: var(--clr-surface-primary);
+  /* background: var(--Surface-Primary, #ebebeb); */
+
+  > span {
+  }
+}
