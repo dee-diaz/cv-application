@@ -6,10 +6,11 @@ export default function DownloadButton() {
   }
 
   return (
-    <button className="btn-download" onClick={previewPdf}>
+    <button className="btn-download" type="button" onClick={previewPdf}>
       <span>Download CV</span>
       <div>
         <svg
+          aria-hidden="true"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
