@@ -7,6 +7,39 @@
   --clr-accent-orange: hsla(28, 62%, 61%, 1);
 }
 
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('src/assets/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('src/assets/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('src/assets/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('src/assets/fonts/HelveticaNowDisplay-ExtraBold.woff2')
+    format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
@@ -17,6 +50,14 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Helvetica Now Display', sans-serif;
 }
 
 body,
@@ -41,6 +82,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-size-adjust: 0.52;
+  background-color: var(--clr-surface-primary);
 }
 
 h1,
