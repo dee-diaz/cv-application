@@ -152,8 +152,7 @@ select {
   summary,
   [tabindex]:not([tabindex='-1'])
 ):focus-visible {
-  border: 1px solid var(--clr-accent-orange);
-  outline: 4px solid var(--clr-accent-orange);
+  outline: 2px solid blue;
 }
 
 @media (prefers-reduced-motion: no-preference) {
