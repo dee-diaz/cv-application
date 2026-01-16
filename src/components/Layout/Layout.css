@@ -1,5 +1,6 @@
-/* .page {
-} */
+.page {
+  display: grid;
+}
 
 .forms-wrapper {
   display: grid;
@@ -8,7 +9,6 @@
 
 @media (min-width: 992px) {
   .page {
-    display: grid;
     grid-template-columns: 1.3fr 2fr;
   }
 
