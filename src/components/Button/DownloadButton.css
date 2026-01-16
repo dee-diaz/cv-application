@@ -37,11 +37,6 @@
   &:active {
     background: hsla(11, 99%, 60%, 0.6);
   }
-
-  &:focus-visible {
-    border: 1px solid var(--clr-accent-orange);
-    outline: 4px solid var(--clr-accent-orange);
-  }
 }
 
 @media (min-width: 992px) {

@@ -143,6 +143,19 @@ select {
   scroll-margin-block: 5ex;
 }
 
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary,
+  [tabindex]:not([tabindex='-1'])
+):focus-visible {
+  border: 1px solid var(--clr-accent-orange);
+  outline: 4px solid var(--clr-accent-orange);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
