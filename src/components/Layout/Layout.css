@@ -3,13 +3,14 @@
 }
 
 .forms-wrapper {
+  margin-top: 1.25rem;
   display: grid;
   gap: 1.25rem;
 }
 
 @media (min-width: 992px) {
   .page {
-    grid-template-columns: 1.3fr 2fr;
+    grid-template-columns: 1.2fr 2fr;
   }
 
   .forms-wrapper {
