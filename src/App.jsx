@@ -66,7 +66,8 @@ const INPUTS_GENERAL = {
     as: 'textarea',
     label: 'Professional summary',
     id: 'professional-summary',
-    placeholder: '2–3 sentences summarizing your role, experience, and what you do best',
+    placeholder:
+      '2–3 sentences summarizing your role, experience, and what you do best',
   },
 };
 
@@ -78,7 +79,7 @@ function App() {
         <Layout className="user-side">
           <Hint message="Edit this CV with your details" />
           <Layout className="forms-wrapper">
-            <FormBlock title="General info" inputs={INPUTS_GENERAL} />
+            <FormBlock title="General" inputs={INPUTS_GENERAL} />
           </Layout>
         </Layout>
       </Layout>
