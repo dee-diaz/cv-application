@@ -108,3 +108,11 @@ export const INPUTS_EXPERIENCE = {
     placeholder: 'Present',
   },
 };
+
+export const BTN_TYPES = {
+  SAVE: 'Save',
+  CANCEL: 'Cancel',
+  DELETE: 'Delete',
+  ADD: 'Add experience',
+  EDIT: 'Edit'
+}
