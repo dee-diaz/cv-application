@@ -12,12 +12,7 @@ export default function FormBlock({ title, inputs }) {
         {inputsArr.map((input) => (
           <Input
             key={input.id}
-            as={input.as}
-            label={input.label}
-            type={input.type}
-            id={input.id}
-            placeholder={input.placeholder}
-            accept={input.accept}
+            {...input}
           />
         ))}
         {title === FORM_BLOCKS.WORK_EXPERIENCE ? <Achievements /> : null}
@@ -28,19 +23,36 @@ export default function FormBlock({ title, inputs }) {
 
 function Achievements() {
   return (
-    <fieldset className="field-group">
+    <fieldset className="field-group" aria-describedby="achievements-help">
       <legend>Achievements or responsibilities</legend>
-      <p>Describe what you achieved or built in this role (3 max)</p>
+      <p id="achievements-help">
+        Describe what you achieved or built in this role (3 max)
+      </p>
 
       <ol className="achievements">
         <li>
-          <Input name="a1" id="a1" type="text" />
+          <Input
+            name="a1"
+            id="a1"
+            type="text"
+            aria-label="Achievement 1"
+          />
         </li>
         <li>
-          <Input name="a2" id="a2" type="text" />
+          <Input
+            name="a2"
+            id="a2"
+            type="text"
+            aria-label="Achievement 2"
+          />
         </li>
         <li>
-          <Input name="a3" id="a3" type="text" />
+          <Input
+            name="a3"
+            id="a3"
+            type="text"
+            aria-label="Achievement 3"
+          />
         </li>
       </ol>
     </fieldset>
@@ -50,23 +62,19 @@ function Achievements() {
 function Input({
   as: Component = 'input',
   label,
-  type,
   id,
-  placeholder,
-  accept,
+  ...rest
 }) {
   const [value, setValue] = useState('');
 
   return (
     <label>
-      {label}
+      {label && <span>{label}</span>}
       <Component
-        type={type}
         id={id}
-        name={id}
-        placeholder={placeholder}
+        name={rest.name ?? id}
+        {...rest}
         value={value}
-        accept={accept}
         onChange={(e) => setValue(e.target.value)}
       />
     </label>
