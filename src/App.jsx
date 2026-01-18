@@ -5,7 +5,12 @@ import Hint from './components/Hint/Hint.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import FormBlock from './components/FormBlock/FormBlock.jsx';
 import Accordion from './components/Accordion/Accordion.jsx';
-import { INPUTS_GENERAL, INPUTS_EXPERIENCE, FORM_BLOCKS } from './config/cvForm.js';
+import {
+  FIELDS_GENERAL,
+  FIELDS_EXPERIENCE,
+  FIELDS_EDUCATION,
+  FORM_BLOCKS,
+} from './config/cvForm.js';
 
 function App() {
   return (
@@ -15,9 +20,18 @@ function App() {
         <Layout className="user-side">
           <Hint message="Edit this CV with your details" />
           <Layout className="forms-wrapper">
-            <FormBlock title={FORM_BLOCKS.GENERAL} inputs={INPUTS_GENERAL} />
+            <FormBlock title={FORM_BLOCKS.GENERAL} inputs={FIELDS_GENERAL} />
             <Accordion headerTitle={FORM_BLOCKS.WORK_EXPERIENCE}>
-              <FormBlock title={FORM_BLOCKS.WORK_EXPERIENCE} inputs={INPUTS_EXPERIENCE} />
+              <FormBlock
+                title={FORM_BLOCKS.WORK_EXPERIENCE}
+                inputs={FIELDS_EXPERIENCE}
+              />
+            </Accordion>
+            <Accordion headerTitle={FORM_BLOCKS.EDUCATION}>
+              <FormBlock
+                title={FORM_BLOCKS.EDUCATION}
+                inputs={FIELDS_EDUCATION}
+              />
             </Accordion>
           </Layout>
         </Layout>
