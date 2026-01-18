@@ -1,0 +1,52 @@
+.accordion {
+  > summary {
+    padding: 1rem;
+    border: 1px solid var(--clr-border);
+    position: relative;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    list-style: none;
+    cursor: pointer;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5rem;
+      height: 1.5rem;
+      background: url('/chevron.svg') center / contain no-repeat;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+
+    .inner {
+      overflow: hidden;
+    }
+  }
+
+  &[open] {
+    .content {
+      grid-template-rows: 1fr;
+    }
+
+    summary {
+      border-bottom: none;
+
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+}
