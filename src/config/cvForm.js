@@ -140,6 +140,15 @@ export const FIELDS_EDUCATION = {
   },
 };
 
+export const FIELDS_SKILLS = {
+  SKILLS: {
+    as: 'textarea',
+    label: 'Skills',
+    id: 'skills',
+    placeholder: 'JavaScript, React, CSS, Git, Figma',
+  },
+};
+
 export const BTN_TYPES = {
   SAVE: 'Save',
   CANCEL: 'Cancel',

@@ -9,6 +9,7 @@ import {
   FIELDS_GENERAL,
   FIELDS_EXPERIENCE,
   FIELDS_EDUCATION,
+  FIELDS_SKILLS,
   FORM_BLOCKS,
 } from './config/cvForm.js';
 
@@ -31,6 +32,12 @@ function App() {
               <FormBlock
                 title={FORM_BLOCKS.EDUCATION}
                 inputs={FIELDS_EDUCATION}
+              />
+            </Accordion>
+            <Accordion headerTitle={FORM_BLOCKS.SKILLS}>
+              <FormBlock
+                title={FORM_BLOCKS.SKILLS}
+                inputs={FIELDS_SKILLS}
               />
             </Accordion>
           </Layout>
