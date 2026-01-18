@@ -6,7 +6,7 @@
   justify-content: space-between;
   width: 15.875rem;
   height: 4rem;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
   border: 1px solid var(--clr-border);
   border-top: none;
   border-bottom: none;
@@ -41,6 +41,7 @@
 
 @media (min-width: 992px) {
   .btn-download {
+    padding-left: 1.5rem;
     width: 27.8125rem;
     height: 6.75rem;
     transition: color 0.2s ease;
