@@ -3,9 +3,13 @@
 }
 
 .forms-wrapper {
-  margin-top: 1.25rem;
   display: grid;
   gap: 1.25rem;
+}
+
+.cv-side {
+  border: 1px solid var(--clr-border);
+  display: none;
 }
 
 @media (min-width: 992px) {
@@ -15,5 +19,12 @@
 
   .forms-wrapper {
     padding: 1.25rem 1.25rem 0 0;
+  }
+
+  .cv-side {
+    display: grid;
+    border-top: none;
+    grid-template-columns: 436fr 358fr;
+    grid-template-rows: 14.5rem 3rem 7rem 8.25rem;
   }
 }

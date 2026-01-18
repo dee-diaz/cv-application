@@ -1,8 +1,8 @@
 import './Layout.css';
 
-export default function Layout({ as: Component = "div", className, children }) {
+export default function Layout({ as: Component = "div", className, id, children }) {
   return (
-    <Component className={className}>
+    <Component id={id} className={className}>
       {children}
     </Component>
   );
