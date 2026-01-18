@@ -1,7 +1,7 @@
 import './FormBlock.css';
 import { useState } from 'react';
 import { FORM_BLOCKS } from '../../config/cvForm';
-import Button from '../Button/Button.jsx';
+import { Button } from '../Button/Button.jsx';
 import { BTN_TYPES } from '../../config/cvForm';
 
 export default function FormBlock({ title, inputs }) {

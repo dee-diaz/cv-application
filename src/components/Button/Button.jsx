@@ -1,7 +1,7 @@
 import './Button.css';
 import { BTN_TYPES } from '../../config/cvForm';
 
-export default function Button({ btnType }) {
+export function Button({ btnType }) {
   let icon;
 
   switch (btnType) {
@@ -82,6 +82,31 @@ export default function Button({ btnType }) {
     <button type="button" className="btn">
       {icon}
       {btnType}
+    </button>
+  );
+}
+
+export function DownloadButton() {
+  function previewPdf() {
+    console.log('PDF preview mode');
+  }
+
+  return (
+    <button className="btn-download" type="button" onClick={previewPdf}>
+      <span>Download CV</span>
+      <div>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19.1475 13.1025C19.042 12.9972 18.8991 12.938 18.75 12.938C18.6009 12.938 18.458 12.9972 18.3525 13.1025L12.5625 18.8916V3.75001C12.5625 3.60082 12.5032 3.45775 12.3978 3.35226C12.2923 3.24677 12.1492 3.18751 12 3.18751C11.8508 3.18751 11.7077 3.24677 11.6023 3.35226C11.4968 3.45775 11.4375 3.60082 11.4375 3.75001V18.8916L5.64751 13.1025C5.54088 13.0031 5.39984 12.9491 5.25411 12.9516C5.10839 12.9542 4.96935 13.0132 4.86629 13.1163C4.76323 13.2194 4.7042 13.3584 4.70163 13.5041C4.69905 13.6498 4.75315 13.7909 4.85251 13.8975L11.6025 20.6475C11.708 20.7528 11.8509 20.812 12 20.812C12.1491 20.812 12.292 20.7528 12.3975 20.6475L19.1475 13.8975C19.2528 13.792 19.312 13.6491 19.312 13.5C19.312 13.3509 19.2528 13.208 19.1475 13.1025Z"
+            fill="black"
+          />
+        </svg>
+      </div>
     </button>
   );
 }
