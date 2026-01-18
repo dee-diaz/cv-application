@@ -5,7 +5,19 @@
   border-bottom: 1px solid var(--clr-border);
 
   h1 {
-    font-size: clamp(2rem, 1.455rem + 2.73vw, 3.5rem);
+    font-size: 2rem;
     text-transform: uppercase;
+  }
+}
+
+@media (min-width: 992px) {
+  .header h1 {
+    font-size: 2.75rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header h1 {
+    font-size: 3.5rem;
   }
 }
