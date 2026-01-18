@@ -153,7 +153,8 @@ select {
   summary,
   [tabindex]:not([tabindex='-1'])
 ):focus-visible {
-  outline: 2px solid blue;
+  outline: 3px solid oklch(51.1% .262 276.966);
+  outline-offset: calc(2px * -1);
 }
 
 @media (prefers-reduced-motion: no-preference) {
