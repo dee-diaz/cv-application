@@ -5,7 +5,7 @@ export const FORM_BLOCKS = {
   SKILLS: 'Skills',
 };
 
-export const INPUTS_GENERAL = {
+export const FIELDS_GENERAL = {
   FIRST_NAME: {
     as: 'input',
     label: 'First name',
@@ -71,7 +71,7 @@ export const INPUTS_GENERAL = {
   },
 };
 
-export const INPUTS_EXPERIENCE = {
+export const FIELDS_EXPERIENCE = {
   JOB_TITLE: {
     as: 'input',
     label: 'Job title',
@@ -109,10 +109,41 @@ export const INPUTS_EXPERIENCE = {
   },
 };
 
+export const FIELDS_EDUCATION = {
+  DEGREE: {
+    as: 'input',
+    label: 'Degree',
+    type: 'text',
+    id: 'degree',
+    placeholder: 'Bachelor\’s Degree in Information Technology',
+  },
+  INSTITUTION: {
+    as: 'input',
+    label: 'Institution',
+    type: 'text',
+    id: 'institution',
+    placeholder: 'University of Texas at Austin',
+  },
+  START_YEAR: {
+    as: 'input',
+    label: 'Start year',
+    type: 'number',
+    id: 'start-year',
+    placeholder: '2013',
+  },
+  END_YEAR: {
+    as: 'input',
+    label: 'End year',
+    type: 'number',
+    id: 'end-year',
+    placeholder: '2017',
+  },
+};
+
 export const BTN_TYPES = {
   SAVE: 'Save',
   CANCEL: 'Cancel',
   DELETE: 'Delete',
   ADD: 'Add experience',
-  EDIT: 'Edit'
-}
+  EDIT: 'Edit',
+};
