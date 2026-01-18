@@ -5,6 +5,7 @@ import Hint from './components/Hint/Hint.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import FormBlock from './components/FormBlock/FormBlock.jsx';
 import Accordion from './components/Accordion/Accordion.jsx';
+import Cv from './components/Cv/Cv.jsx';
 import {
   FIELDS_GENERAL,
   FIELDS_EXPERIENCE,
@@ -41,6 +42,9 @@ function App() {
               />
             </Accordion>
           </Layout>
+        </Layout>
+        <Layout className="cv-side">
+          <Cv />
         </Layout>
       </Layout>
     </div>
