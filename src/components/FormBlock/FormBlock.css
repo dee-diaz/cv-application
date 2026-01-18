@@ -94,8 +94,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 
-    label:has(textarea, input#job-title),
-    fieldset {
+    label:has(textarea, input#job-title, input#degree, input#institution),
+    fieldset, button {
       grid-column: span 2;
     }
   }

@@ -1,13 +1,15 @@
 import './FormBlock.css';
 import { useState } from 'react';
 import { FORM_BLOCKS } from '../../config/cvForm';
+import Button from '../Button/Button.jsx';
+import { BTN_TYPES } from '../../config/cvForm';
 
 export default function FormBlock({ title, inputs }) {
   const formId = title.toLowerCase().replace(' ', '-');
   const inputsArr = Object.values(inputs);
   return (
     <div className="form-block-wrapper">
-      <GeneralBlockHeader title={title} formId={formId} />
+      <ImageUpload title={title} formId={formId} />
       <form className={formId} name={formId} id={formId}>
         {inputsArr.map((input) => (
           <Input
@@ -16,6 +18,7 @@ export default function FormBlock({ title, inputs }) {
           />
         ))}
         {title === FORM_BLOCKS.WORK_EXPERIENCE ? <Achievements /> : null}
+        {title !== FORM_BLOCKS.GENERAL ? <Button btnType={BTN_TYPES.SAVE} /> : null}
       </form>
     </div>
   );
@@ -81,7 +84,7 @@ function Input({
   );
 }
 
-function GeneralBlockHeader({ title, formId }) {
+function ImageUpload({ title, formId }) {
   return (
     <>
       {title === 'General' ? (
