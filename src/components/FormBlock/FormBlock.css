@@ -2,8 +2,13 @@
   border: 1px solid var(--clr-border);
   padding-block: 1rem;
 
+  &:has(.img-upload) {
+    form {
+      margin-top: 1rem;
+    }
+  }
+
   form {
-    margin-top: 1rem;
     padding: 0 1.25rem;
     display: grid;
     gap: 1rem;
@@ -62,7 +67,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 
-    label:has(textarea) {
+    label:has(textarea, input#job-title) {
       grid-column: span 2;
     }
   }
