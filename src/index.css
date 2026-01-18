@@ -140,6 +140,11 @@ select {
   font-size: inherit;
 }
 
+fieldset, legend {
+  padding: 0;
+  margin: 0;
+}
+
 :target {
   scroll-margin-block: 5ex;
 }
@@ -153,7 +158,7 @@ select {
   summary,
   [tabindex]:not([tabindex='-1'])
 ):focus-visible {
-  outline: 3px solid oklch(51.1% .262 276.966);
+  outline: 3px solid oklch(51.1% 0.262 276.966);
   outline-offset: calc(2px * -1);
 }
 
