@@ -29,6 +29,33 @@
       font-weight: 500;
       color: var(--clr-text-primary);
     }
+
+    legend {
+      font-weight: 700;
+      margin-bottom: 0.375rem;
+
+      + p {
+        color: rgba(6, 6, 6, 0.8);
+        margin-bottom: 0.625rem;
+      }
+    }
+  }
+
+  .achievements {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0 0 0.75rem 1.5rem;
+
+    > li {
+      input {
+        padding-bottom: 0;
+      }
+
+      &::marker {
+        color: hsla(0, 0%, 2%, 0.5);
+      }
+    }
   }
 }
 
@@ -67,7 +94,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 
-    label:has(textarea, input#job-title) {
+    label:has(textarea, input#job-title),
+    fieldset {
       grid-column: span 2;
     }
   }

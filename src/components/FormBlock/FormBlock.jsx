@@ -1,12 +1,13 @@
 import './FormBlock.css';
 import { useState } from 'react';
+import { FORM_BLOCKS } from '../../config/cvForm';
 
 export default function FormBlock({ title, inputs }) {
   const formId = title.toLowerCase().replace(' ', '-');
   const inputsArr = Object.values(inputs);
   return (
     <div className="form-block-wrapper">
-      <BlockHeader title={title} formId={formId} />
+      <GeneralBlockHeader title={title} formId={formId} />
       <form className={formId} name={formId} id={formId}>
         {inputsArr.map((input) => (
           <Input
@@ -19,8 +20,30 @@ export default function FormBlock({ title, inputs }) {
             accept={input.accept}
           />
         ))}
+        {title === FORM_BLOCKS.WORK_EXPERIENCE ? <Achievements /> : null}
       </form>
     </div>
+  );
+}
+
+function Achievements() {
+  return (
+    <fieldset className="field-group">
+      <legend>Achievements or responsibilities</legend>
+      <p>Describe what you achieved or built in this role (3 max)</p>
+
+      <ol className="achievements">
+        <li>
+          <Input name="a1" id="a1" type="text" />
+        </li>
+        <li>
+          <Input name="a2" id="a2" type="text" />
+        </li>
+        <li>
+          <Input name="a3" id="a3" type="text" />
+        </li>
+      </ol>
+    </fieldset>
   );
 }
 
@@ -50,7 +73,7 @@ function Input({
   );
 }
 
-function BlockHeader({ title, formId }) {
+function GeneralBlockHeader({ title, formId }) {
   return (
     <>
       {title === 'General' ? (
