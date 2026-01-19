@@ -13,6 +13,7 @@ import {
   FIELDS_SKILLS,
   FORM_BLOCKS,
 } from './config/cvForm.js';
+import Footer from './components/Footer/Footer.jsx';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Cv />
         </Layout>
       </Layout>
+      <Footer />
     </div>
   );
 }
