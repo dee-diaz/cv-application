@@ -14,7 +14,7 @@ export default function Cv() {
           <img src="/photo.webp" alt="Photo of a candidate" />
         </CvCell>
 
-        <CvCell className="contact-title">
+        <CvCell className="cell-title">
           <p>Contact Details</p>
         </CvCell>
 
@@ -102,18 +102,18 @@ export default function Cv() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_40_874)">
+                <g clipPath="url(#clip0_40_874)">
                   <path
                     d="M15.4286 8.00001C15.4286 9.97019 14.6459 11.8597 13.2528 13.2528C11.8596 14.6459 9.97016 15.4286 7.99998 15.4286C6.0298 15.4286 4.14032 14.6459 2.74719 13.2528C1.35406 11.8597 0.571411 9.97019 0.571411 8.00001M15.4286 8.00001C15.4286 6.02983 14.6459 4.14035 13.2528 2.74722C11.8596 1.35409 9.97016 0.571442 7.99998 0.571442C6.0298 0.571442 4.14032 1.35409 2.74719 2.74722C1.35406 4.14035 0.571411 6.02983 0.571411 8.00001M15.4286 8.00001H0.571411"
                     stroke="#060606"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M10.8571 8.00001C10.7168 10.7166 9.71617 13.3181 7.99997 15.4286C6.28376 13.3181 5.28316 10.7166 5.14282 8.00001C5.28316 5.28345 6.28376 2.6819 7.99997 0.571442C9.71617 2.6819 10.7168 5.28345 10.8571 8.00001Z"
                     stroke="#060606"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </g>
                 <defs>
@@ -130,8 +130,20 @@ export default function Cv() {
         </CvCell>
 
         <CvCell className="summary">
-          <p className='title'>Professional summary</p>
-          <p>Front-end engineer with a proven track record of delivering production-ready web applications. Specialized in building scalable UI systems, optimizing performance, and ensuring accessibility across modern browsers and devices. Effective collaborator with design and product teams.</p>
+          <p className="title">Professional summary</p>
+          <p>
+            Front-end engineer with a proven track record of delivering
+            production-ready web applications. Specialized in building scalable
+            UI systems, optimizing performance, and ensuring accessibility
+            across modern browsers and devices. Effective collaborator with
+            design and product teams.
+          </p>
+        </CvCell>
+      </CvBlock>
+
+      <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
+        <CvCell className="cell-title">
+          <p>Work Experience</p>
         </CvCell>
       </CvBlock>
     </div>

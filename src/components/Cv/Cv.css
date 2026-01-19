@@ -28,6 +28,7 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
     }
     &.name-role {
       border-right: none;
@@ -61,7 +62,7 @@
       }
     }
 
-    &.contact-title {
+    &.cell-title {
       display: flex;
       align-items: center;
       border: none;
