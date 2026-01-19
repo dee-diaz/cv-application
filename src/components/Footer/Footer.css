@@ -15,7 +15,7 @@
       transition: color 0.2s ease;
 
       &::before {
-        --ease-out: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+        --ease-out: cubic-bezier(0.075, 0.82, 0.165, 1);
         content: '';
         position: absolute;
         bottom: -0.25rem;
