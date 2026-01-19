@@ -143,7 +143,7 @@ export default function Cv() {
 
       <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
         <CvCell className="cell-title">
-          <p>Work Experience</p>
+          <p>{FORM_BLOCKS.WORK_EXPERIENCE}</p>
         </CvCell>
 
         <CvCell className="work-block">
@@ -178,13 +178,15 @@ export default function Cv() {
           </div>
           <ul className="achievements">
             <li>
-              Developed reusable UI components for marketing and product websites
+              Developed reusable UI components for marketing and product
+              websites
             </li>
             <li>
               Translated design mockups into clean, maintainable front-end code
             </li>
             <li>
-              Worked closely with cross-functional teams to ship features on tight deadlines
+              Worked closely with cross-functional teams to ship features on
+              tight deadlines
             </li>
           </ul>
         </CvCell>
@@ -198,15 +200,37 @@ export default function Cv() {
           </div>
           <ul className="achievements">
             <li>
-              Assisted in building and updating client websites using modern front-end technologies
+              Assisted in building and updating client websites using modern
+              front-end technologies
             </li>
+            <li>Implemented responsive layouts and basic animations</li>
             <li>
-              Implemented responsive layouts and basic animations
-            </li>
-            <li>
-              Fixed UI bugs and improved overall usability under senior developer guidance
+              Fixed UI bugs and improved overall usability under senior
+              developer guidance
             </li>
           </ul>
+        </CvCell>
+      </CvBlock>
+
+      <CvBlock blockName={FORM_BLOCKS.EDUCATION}>
+        <CvCell className="cell-title">
+          <p>{FORM_BLOCKS.EDUCATION}</p>
+        </CvCell>
+
+        <CvCell className="education-block">
+          <p className="degree">Bachelor’s Degree in Information Technology</p>
+          <p className="school">University of Texas at Austin</p>
+          <p className="years">2013 – 2017</p>
+        </CvCell>
+      </CvBlock>
+
+      <CvBlock blockName={FORM_BLOCKS.SKILLS}>
+        <CvCell className="cell-title">
+          <p>{FORM_BLOCKS.SKILLS}</p>
+        </CvCell>
+
+        <CvCell className="skills-block">
+          <p>JavaScript (ES6+) · HTML5 · CSS3 · React · Next.js · Responsive UI · Accessibility (WCAG) · Git · Figma · Node.js ·  Express</p>
         </CvCell>
       </CvBlock>
     </div>

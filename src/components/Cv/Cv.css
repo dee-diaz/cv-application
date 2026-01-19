@@ -14,21 +14,55 @@
 }
 
 @media (min-width: 992px) {
+  .cv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .cv-block {
     display: grid;
 
     &.general {
+      grid-column: span 2;
       border-top: none;
       grid-template-columns: 436fr 358fr;
       grid-template-rows: 16rem 3rem minmax(7rem, auto) minmax(8.25rem, auto);
     }
 
     &.work-experience {
+      grid-column: span 2;
       border-top: none;
       grid-template-rows: minmax(3.25rem, auto) repeat(3, auto);
 
       .cell-title {
         border-bottom: none;
+      }
+    }
+
+    &.education,
+    &.skills {
+      border-top: none;
+      .education-block,
+      .skills-block {
+        border: none;
+      }
+    }
+
+    &.skills {
+      .skills-block {
+        display: flex;
+        align-items: start;
+        padding-top: 0;
+      }
+    }
+
+    &.education {
+      display: grid;
+      gap: 0.25rem;
+      border-right: none;
+
+      .degree {
+        font-weight: 700;
       }
     }
   }
@@ -80,6 +114,7 @@
       font-size: 1.25rem;
       font-weight: 700;
       text-transform: uppercase;
+      height: 3.25rem;
     }
 
     &.contact-info {
