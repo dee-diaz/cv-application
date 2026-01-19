@@ -73,7 +73,7 @@ export default function Cv() {
             </li>
           </ul>
         </CvCell>
-        <CvCell className="contact-info">
+        <CvCell className="contact-info r-edge">
           <ul>
             <li>
               <svg
@@ -144,6 +144,69 @@ export default function Cv() {
       <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
         <CvCell className="cell-title">
           <p>Work Experience</p>
+        </CvCell>
+
+        <CvCell className="work-block">
+          <div className="general">
+            <p className="role">Front-End Engineer</p>
+            <p className="company">Supersite</p>
+            <p className="dates">June 2021 – Present</p>
+            <p className="location">Austin, TX</p>
+          </div>
+          <ul className="achievements">
+            <li>
+              Built and maintained responsive user interfaces for a
+              customer-facing web platform
+            </li>
+            <li>
+              Collaborated with designers and product managers to implement
+              design systems and UI components
+            </li>
+            <li>
+              Improved page performance and accessibility across modern browsers
+              and devices
+            </li>
+          </ul>
+        </CvCell>
+
+        <CvCell className="work-block">
+          <div className="general">
+            <p className="role">UI / Front-End Developer</p>
+            <p className="company">Digital Studio Co.</p>
+            <p className="dates">Jan 2019 – Sept 2021</p>
+            <p className="location">Remote</p>
+          </div>
+          <ul className="achievements">
+            <li>
+              Developed reusable UI components for marketing and product websites
+            </li>
+            <li>
+              Translated design mockups into clean, maintainable front-end code
+            </li>
+            <li>
+              Worked closely with cross-functional teams to ship features on tight deadlines
+            </li>
+          </ul>
+        </CvCell>
+
+        <CvCell className="work-block">
+          <div className="general">
+            <p className="role">Junior Front-End Developer</p>
+            <p className="company">Creative Web Agency </p>
+            <p className="dates">Feb 2017 – Oct 2019</p>
+            <p className="location">Austin, TX</p>
+          </div>
+          <ul className="achievements">
+            <li>
+              Assisted in building and updating client websites using modern front-end technologies
+            </li>
+            <li>
+              Implemented responsive layouts and basic animations
+            </li>
+            <li>
+              Fixed UI bugs and improved overall usability under senior developer guidance
+            </li>
+          </ul>
         </CvCell>
       </CvBlock>
     </div>
