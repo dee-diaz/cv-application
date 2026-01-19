@@ -6,6 +6,11 @@ import ContactItem from './ContactItem';
 export default function Cv({ data }) {
   return (
     <div id="cv" className="cv">
+      {/* <GeneralInfoBlock data={data.general} />
+      <WorkExperienceBlock jobs={data.jobs} />
+      <EducationBlock education={data.education} />
+      <SkillsBlock skills={data.skills} /> */}
+
       <CvBlock blockName={FORM_BLOCKS.GENERAL}>
         <CvCell className="name-role">
           <h2>Francis Donovan</h2>
@@ -29,8 +34,12 @@ export default function Cv({ data }) {
         </CvCell>
         <CvCell className="contact-info r-edge">
           <ul>
-            <ContactItem icon={Icons.LinkedIn} href="#">linkedin.com/in/francisthegreat</ContactItem>
-            <ContactItem icon={Icons.Website} href="#">www.supersite.com</ContactItem>
+            <ContactItem icon={Icons.LinkedIn} href="#">
+              linkedin.com/in/francisthegreat
+            </ContactItem>
+            <ContactItem icon={Icons.Website} href="#">
+              www.supersite.com
+            </ContactItem>
           </ul>
         </CvCell>
 
@@ -142,6 +151,120 @@ export default function Cv({ data }) {
         </CvCell>
       </CvBlock>
     </div>
+  );
+}
+
+function GeneralInfoBlock({ data }) {
+  return (
+    <CvBlock blockName={FORM_BLOCKS.GENERAL}>
+      <CvCell className="name-role">
+        <h2>{data.name}</h2>
+        <h3>{data.role}</h3>
+      </CvCell>
+
+      <CvCell className="photo">
+        <img src="/photo.webp" alt="Photo of a candidate" />
+      </CvCell>
+
+      <CvCell className="cell-title">
+        <p>Contact Details</p>
+      </CvCell>
+
+      <CvCell className="contact-info">
+        <ul>
+          <ContactItem icon={Icons.Location}>{data.location}</ContactItem>
+          <ContactItem icon={Icons.Phone}>{data.phone}</ContactItem>
+          <ContactItem icon={Icons.Email}>{data.email}</ContactItem>
+        </ul>
+      </CvCell>
+      <CvCell className="contact-info r-edge">
+        <ul>
+          <ContactItem icon={Icons.LinkedIn} href={data.linkedInUrl}>
+            {data.linkedInUrl}
+          </ContactItem>
+          <ContactItem icon={Icons.Website} href={data.websiteUrl}>
+            {data.websiteUrl}
+          </ContactItem>
+        </ul>
+      </CvCell>
+
+      <CvCell className="summary">
+        <p className="title">Professional summary</p>
+        <p>
+          {data.summary}
+        </p>
+      </CvCell>
+    </CvBlock>
+  );
+}
+
+function WorkExperienceBlock({ jobs }) {
+  return (
+    <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
+      <CvCell className="cell-title">
+        <p>{FORM_BLOCKS.WORK_EXPERIENCE}</p>
+      </CvCell>
+
+      {jobs.map((job, index) => (
+        <WorkItem key={index} {...job} />
+      ))}
+    </CvBlock>
+  );
+}
+
+function WorkItem({ role, company, dates, location, achievements }) {
+  return (
+    <CvCell className="work-block">
+      <div className="general">
+        <p className="role">{role}</p>
+        <p className="company">{company}</p>
+        <p className="dates">{dates}</p>
+        <p className="location">{location}</p>
+      </div>
+      <ul className="achievements">
+        {achievements.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </CvCell>
+  );
+}
+
+function EducationBlock({ education }) {
+  return (
+    <CvBlock blockName={FORM_BLOCKS.EDUCATION}>
+      <CvCell className="cell-title">
+        <p>{FORM_BLOCKS.EDUCATION}</p>
+      </CvCell>
+
+      {education.map((item, index) => (
+        <EducationItem key={index} {...item} />
+      ))}
+    </CvBlock>
+  );
+}
+
+function EducationItem({ degree, school, years }) {
+  return (
+    <CvCell className="education-block">
+      <p className="degree">{degree}</p>
+      <p className="school">{school}</p>
+      <p className="years">{years}</p>
+    </CvCell>
+  );
+}
+
+function SkillsBlock({ skills }) {
+  return (
+    <CvBlock blockName={FORM_BLOCKS.SKILLS}>
+      <CvCell className="cell-title">
+        <p>{FORM_BLOCKS.SKILLS}</p>
+      </CvCell>
+
+      <CvCell className="skills-block">
+        <p>{skills}</p>
+      </CvCell>
+    </CvBlock>
   );
 }
 
