@@ -1,6 +1,7 @@
 import './Cv.css';
 import { FORM_BLOCKS } from '../../config/cvForm';
-import { Icons } from './Icons';
+import Icons from './Icons';
+import ContactItem from './ContactItem';
 
 export default function Cv({ data }) {
   return (
@@ -21,34 +22,15 @@ export default function Cv({ data }) {
 
         <CvCell className="contact-info">
           <ul>
-            <li>
-              {Icons.Location}
-              <span>Austin, TX</span>
-            </li>
-            <li>
-              {Icons.Phone}
-              <span>(512) 555-7812</span>
-            </li>
-            <li>
-              {Icons.Email}
-              <span>hello@supersite.com</span>
-            </li>
+            <ContactItem icon={Icons.Location}>Austin, TX</ContactItem>
+            <ContactItem icon={Icons.Phone}>(512) 555-7812</ContactItem>
+            <ContactItem icon={Icons.Email}>hello@supersite.com</ContactItem>
           </ul>
         </CvCell>
         <CvCell className="contact-info r-edge">
           <ul>
-            <li>
-              {Icons.LinkedIn}
-              <a target="_blank" href="#!">
-                linkedin.com/in/francisthegreat
-              </a>
-            </li>
-            <li>
-              {Icons.Website}
-              <a target="_blank" href="#!">
-                www.supersite.com
-              </a>
-            </li>
+            <ContactItem icon={Icons.LinkedIn} href="#">linkedin.com/in/francisthegreat</ContactItem>
+            <ContactItem icon={Icons.Website} href="#">www.supersite.com</ContactItem>
           </ul>
         </CvCell>
 
@@ -153,7 +135,10 @@ export default function Cv({ data }) {
         </CvCell>
 
         <CvCell className="skills-block">
-          <p>JavaScript (ES6+) · HTML5 · CSS3 · React · Next.js · Responsive UI · Accessibility (WCAG) · Git · Figma · Node.js ·  Express</p>
+          <p>
+            JavaScript (ES6+) · HTML5 · CSS3 · React · Next.js · Responsive UI ·
+            Accessibility (WCAG) · Git · Figma · Node.js · Express
+          </p>
         </CvCell>
       </CvBlock>
     </div>

@@ -1,5 +1,5 @@
-export const Icons = {
-  Location: (
+const Icons = {
+  Location: () => (
     <svg
       width="16"
       height="16"
@@ -14,7 +14,7 @@ export const Icons = {
       />
     </svg>
   ),
-  Phone: (
+  Phone: () => (
     <svg
       width="16"
       height="16"
@@ -29,7 +29,7 @@ export const Icons = {
       />
     </svg>
   ),
-  Email: (
+  Email: () => (
     <svg
       width="16"
       height="16"
@@ -44,7 +44,7 @@ export const Icons = {
       />
     </svg>
   ),
-  LinkedIn: (
+  LinkedIn: () => (
     <svg
       width="16"
       height="16"
@@ -59,7 +59,7 @@ export const Icons = {
       />
     </svg>
   ),
-  Website: (
+  Website: () => (
     <svg
       width="16"
       height="16"
@@ -90,3 +90,5 @@ export const Icons = {
     </svg>
   ),
 };
+
+export default Icons;
