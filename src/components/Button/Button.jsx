@@ -1,7 +1,7 @@
 import './Button.css';
 import { BTN_TYPES } from '../../config/cvForm';
 
-export function Button({ btnType }) {
+export function Button({ btnType, onClick }) {
   let icon;
 
   switch (btnType) {
@@ -79,7 +79,7 @@ export function Button({ btnType }) {
   }
 
   return (
-    <button type="button" className="btn">
+    <button type="button" className="btn" onClick={onClick}>
       {icon}
       {btnType}
     </button>
