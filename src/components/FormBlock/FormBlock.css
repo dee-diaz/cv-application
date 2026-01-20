@@ -28,6 +28,10 @@
       border-bottom: 1px solid rgba(6, 6, 6, 0.48);
       font-weight: 500;
       color: var(--clr-text-primary);
+
+      &:focus {
+        padding-left: 0.5rem;
+      }
     }
 
     legend {

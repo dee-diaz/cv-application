@@ -4,7 +4,7 @@ import { FORM_BLOCKS } from '../../config/cvForm';
 import { Button } from '../Button/Button.jsx';
 import { BTN_TYPES } from '../../config/cvForm';
 
-export default function FormBlock({ title, inputs }) {
+export default function FormBlock({ title, inputs, onChange }) {
   const formId = title.toLowerCase().replace(' ', '-');
   const inputsArr = Object.values(inputs);
   return (
@@ -14,7 +14,7 @@ export default function FormBlock({ title, inputs }) {
       ) : null}
       <form className={formId} name={formId} id={formId}>
         {inputsArr.map((input) => (
-          <Input key={input.id} {...input} />
+          <Input key={input.id} onChange={onChange} {...input} />
         ))}
         {title === FORM_BLOCKS.WORK_EXPERIENCE ? <Achievements /> : null}
         {title !== FORM_BLOCKS.GENERAL ? (
@@ -48,9 +48,7 @@ function Achievements() {
   );
 }
 
-function Input({ as: Component = 'input', label, id, ...rest }) {
-  const [value, setValue] = useState('');
-
+function Input({ as: Component = 'input', label, id, onChange, ...rest }) {
   return (
     <label>
       {label && <span>{label}</span>}
@@ -59,13 +57,7 @@ function Input({ as: Component = 'input', label, id, ...rest }) {
           List your most relevant skills. Separate with commas.
         </p>
       ) : null}
-      <Component
-        id={id}
-        name={rest.name ?? id}
-        {...rest}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Component id={id} name={rest.name ?? id} {...rest} onChange={onChange} />
     </label>
   );
 }
