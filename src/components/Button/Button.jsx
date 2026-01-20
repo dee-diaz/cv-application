@@ -1,10 +1,10 @@
 import './Button.css';
 import { BTN_TYPES } from '../../config/cvForm';
 
-export function Button({ btnType, onClick }) {
+export function Button({ type = 'button', btnText, onClick }) {
   let icon;
 
-  switch (btnType) {
+  switch (btnText) {
     case BTN_TYPES.SAVE:
       icon = (
         <svg
@@ -76,12 +76,14 @@ export function Button({ btnType, onClick }) {
         </svg>
       );
       break;
+    default:
+      icon = null;
   }
 
   return (
-    <button type="button" className="btn" onClick={onClick}>
+    <button type={type} className="btn" onClick={onClick}>
       {icon}
-      {btnType}
+      {btnText}
     </button>
   );
 }
