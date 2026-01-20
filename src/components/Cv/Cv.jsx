@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Cv.css';
 import { FORM_BLOCKS } from '../../config/cvForm';
 import Icons from './Icons';
@@ -88,12 +89,13 @@ export default function Cv({ data }) {
     website,
     summary,
   };
-  const jobs = [DUMMY.job1, DUMMY.job2, DUMMY.job3].reverse();
+  // const workProps = [data.job1, data.job2, data.job3].reverse();
+  const workProps = [DUMMY.job1, DUMMY.job2, DUMMY.job3].reverse();
 
   return (
     <div id="cv" className="cv">
       <GeneralInfoBlock data={generalProps} />
-      <WorkExperienceBlock jobs={jobs} />
+      <WorkExperienceBlock jobs={workProps} />
       {/* <EducationBlock degree={data.degree} school={data.institution} startDate={data.eduStartYear} endDate={data.eduEndYear} /> */}
       {/* <SkillsBlock skills={data.skills} /> */}
 
@@ -283,6 +285,8 @@ function GeneralInfoBlock({ data }) {
 }
 
 function WorkExperienceBlock({ jobs }) {
+  const [numOfJobs, setNumOfJobs] = useState(0);
+
   return (
     <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
       <CvCell className="cell-title">
