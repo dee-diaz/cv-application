@@ -3,18 +3,104 @@ import { FORM_BLOCKS } from '../../config/cvForm';
 import Icons from './Icons';
 import ContactItem from './ContactItem';
 
+const DUMMY = {
+  image: null,
+  firstName: 'Francis',
+  lastName: 'Donovan',
+  role: 'Front-end engineer',
+  city: 'Austin, TX',
+  phone: '(512) 555-7812',
+  email: 'hello@supersite.com',
+  linkedIn: 'linkedin.com/in/francisthegreat',
+  website: 'www.supersite.com',
+  summary:
+    'Front-end engineer with a proven track record of delivering production-ready web applications. Specialized in building scalable UI systems, optimizing performance, and ensuring accessibility across modern browsers and devices. Effective collaborator with design and product teams.',
+  job1: {
+    id: 'job1',
+    jobTitle: 'Junior Front-End Developer',
+    company: 'Creative Web Agency',
+    companyLocation: 'Austin, TX',
+    jobStartDate: 'Feb 2017',
+    jobEndDate: 'Oct 2019',
+    achievements: [
+      'Assisted in building and updating client websites using modern front-end technologies',
+      'Implemented responsive layouts and basic animations',
+      'Fixed UI bugs and improved overall usability under senior developer guidance',
+    ],
+  },
+  job2: {
+    id: 'job2',
+    jobTitle: 'UI / Front-End Developer',
+    company: 'Digital Studio Co.',
+    companyLocation: 'Remote',
+    jobStartDate: 'Jan 2019',
+    jobEndDate: 'Sept 2021',
+    achievements: [
+      'Developed reusable UI components for marketing and product websites',
+      'Translated design mockups into clean, maintainable front-end code',
+      'Worked closely with cross-functional teams to ship features on tight deadlines',
+    ],
+  },
+  job3: {
+    id: 'job3',
+    jobTitle: 'Front-End Engineer',
+    company: 'Supersite',
+    companyLocation: 'Austin, TX',
+    jobStartDate: 'June 2021',
+    jobEndDate: 'Present',
+    achievements: [
+      'Built and maintained responsive user interfaces for a customer-facing web platform',
+      'Collaborated with designers and product managers to implement design systems and UI components',
+      'Improved page performance and accessibility across modern browsers and devices',
+    ],
+  },
+
+  degree: 'Bachelor\’s Degree in Information Technology',
+  institution: 'University of Texas at Austin',
+  eduStartYear: '2013',
+  eduEndYear: '2017',
+
+  skills:
+    'JavaScript (ES6+) · HTML5 · CSS3 · React · Next.js · Responsive UI · Accessibility (WCAG) · Git · Figma · Node.js ·  Express',
+};
+
 export default function Cv({ data }) {
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    city,
+    role,
+    linkedIn,
+    website,
+    summary,
+  } = data;
+
+  const generalProps = {
+    firstName,
+    lastName,
+    email,
+    phone,
+    city,
+    role,
+    linkedIn,
+    website,
+    summary,
+  };
+  const jobs = [DUMMY.job1, DUMMY.job2, DUMMY.job3].reverse();
+
   return (
     <div id="cv" className="cv">
-      {/* <GeneralInfoBlock data={data.general} />
-      <WorkExperienceBlock jobs={data.jobs} />
-      <EducationBlock education={data.education} />
-      <SkillsBlock skills={data.skills} /> */}
+      <GeneralInfoBlock data={generalProps} />
+      <WorkExperienceBlock jobs={jobs} />
+      {/* <EducationBlock degree={data.degree} school={data.institution} startDate={data.eduStartYear} endDate={data.eduEndYear} /> */}
+      {/* <SkillsBlock skills={data.skills} /> */}
 
-      <CvBlock blockName={FORM_BLOCKS.GENERAL}>
+      {/* <CvBlock blockName={FORM_BLOCKS.GENERAL}>
         <CvCell className="name-role">
-          <h2>Francis Donovan</h2>
-          <h3>Front-end Engineer</h3>
+          <h2>{`${data.firstName} ${data.lastName}`}</h2>
+          <h3>{data.role}</h3>
         </CvCell>
 
         <CvCell className="photo">
@@ -149,7 +235,7 @@ export default function Cv({ data }) {
             Accessibility (WCAG) · Git · Figma · Node.js · Express
           </p>
         </CvCell>
-      </CvBlock>
+      </CvBlock> */}
     </div>
   );
 }
@@ -158,7 +244,7 @@ function GeneralInfoBlock({ data }) {
   return (
     <CvBlock blockName={FORM_BLOCKS.GENERAL}>
       <CvCell className="name-role">
-        <h2>{data.name}</h2>
+        <h2>{`${data.firstName} ${data.lastName}`}</h2>
         <h3>{data.role}</h3>
       </CvCell>
 
@@ -172,27 +258,25 @@ function GeneralInfoBlock({ data }) {
 
       <CvCell className="contact-info">
         <ul>
-          <ContactItem icon={Icons.Location}>{data.location}</ContactItem>
+          <ContactItem icon={Icons.Location}>{data.city}</ContactItem>
           <ContactItem icon={Icons.Phone}>{data.phone}</ContactItem>
           <ContactItem icon={Icons.Email}>{data.email}</ContactItem>
         </ul>
       </CvCell>
       <CvCell className="contact-info r-edge">
         <ul>
-          <ContactItem icon={Icons.LinkedIn} href={data.linkedInUrl}>
-            {data.linkedInUrl}
+          <ContactItem icon={Icons.LinkedIn} href={data.linkedIn}>
+            {data.linkedIn}
           </ContactItem>
-          <ContactItem icon={Icons.Website} href={data.websiteUrl}>
-            {data.websiteUrl}
+          <ContactItem icon={Icons.Website} href={data.website}>
+            {data.website}
           </ContactItem>
         </ul>
       </CvCell>
 
       <CvCell className="summary">
         <p className="title">Professional summary</p>
-        <p>
-          {data.summary}
-        </p>
+        <p>{data.summary}</p>
       </CvCell>
     </CvBlock>
   );
@@ -205,21 +289,29 @@ function WorkExperienceBlock({ jobs }) {
         <p>{FORM_BLOCKS.WORK_EXPERIENCE}</p>
       </CvCell>
 
-      {jobs.map((job, index) => (
-        <WorkItem key={index} {...job} />
+      {jobs.map((job) => (
+        <WorkItem key={job.id} {...job} />
       ))}
     </CvBlock>
   );
 }
 
-function WorkItem({ role, company, dates, location, achievements }) {
+function WorkItem({
+  id,
+  jobTitle,
+  company,
+  jobStartDate,
+  jobEndDate,
+  companyLocation,
+  achievements,
+}) {
   return (
-    <CvCell className="work-block">
+    <CvCell id={id} className="work-block">
       <div className="general">
-        <p className="role">{role}</p>
+        <p className="role">{jobTitle}</p>
         <p className="company">{company}</p>
-        <p className="dates">{dates}</p>
-        <p className="location">{location}</p>
+        <p className="dates">{`${jobStartDate} - ${jobEndDate}`}</p>
+        <p className="location">{companyLocation}</p>
       </div>
       <ul className="achievements">
         {achievements.map((item, i) => (
@@ -230,26 +322,24 @@ function WorkItem({ role, company, dates, location, achievements }) {
   );
 }
 
-function EducationBlock({ education }) {
+function EducationBlock({ degree, school, startDate, endDate }) {
   return (
     <CvBlock blockName={FORM_BLOCKS.EDUCATION}>
       <CvCell className="cell-title">
         <p>{FORM_BLOCKS.EDUCATION}</p>
       </CvCell>
 
-      {education.map((item, index) => (
-        <EducationItem key={index} {...item} />
-      ))}
+      <EducationItem key={index} {...item} />
     </CvBlock>
   );
 }
 
-function EducationItem({ degree, school, years }) {
+function EducationItem({ degree, school, startYear, endYear }) {
   return (
     <CvCell className="education-block">
       <p className="degree">{degree}</p>
       <p className="school">{school}</p>
-      <p className="years">{years}</p>
+      <p className="years">{`${startYear}-${endYear}`}</p>
     </CvCell>
   );
 }
@@ -273,6 +363,10 @@ function CvBlock({ blockName, children }) {
   return <div className={`cv-block ${blockId}`}>{children}</div>;
 }
 
-function CvCell({ className, children }) {
-  return <div className={`cv-cell ${className}`}>{children}</div>;
+function CvCell({ id, className, children }) {
+  return (
+    <div id={id} className={`cv-cell ${className}`}>
+      {children}
+    </div>
+  );
 }

@@ -10,14 +10,14 @@ export const FIELDS_GENERAL = {
     as: 'input',
     label: 'First name',
     type: 'text',
-    id: 'first-name',
+    id: 'firstName',
     placeholder: 'Your first name',
   },
   LAST_NAME: {
     as: 'input',
     label: 'Last name',
     type: 'text',
-    id: 'last-name',
+    id: 'lastName',
     placeholder: 'Your last name',
   },
   ROLE: {
@@ -52,7 +52,7 @@ export const FIELDS_GENERAL = {
     as: 'input',
     label: 'LinkedIn',
     type: 'url',
-    id: 'linked-in',
+    id: 'linkedIn',
     placeholder: 'Your LinkedIn URL',
   },
   WEBSITE: {
@@ -65,7 +65,7 @@ export const FIELDS_GENERAL = {
   SUMMARY: {
     as: 'textarea',
     label: 'Professional summary',
-    id: 'professional-summary',
+    id: 'summary',
     placeholder:
       '2–3 sentences summarizing your role, experience, and what you do best',
   },
@@ -76,7 +76,7 @@ export const FIELDS_EXPERIENCE = {
     as: 'input',
     label: 'Job title',
     type: 'text',
-    id: 'job-title',
+    id: 'jobTitle',
     placeholder: 'Front-End Engineer',
   },
   COMPANY: {
@@ -90,21 +90,21 @@ export const FIELDS_EXPERIENCE = {
     as: 'input',
     label: 'Location',
     type: 'text',
-    id: 'location',
+    id: 'companyLocation',
     placeholder: 'Austin, TX',
   },
   START_DATE: {
     as: 'input',
     label: 'Start date',
     type: 'text',
-    id: 'start-date',
+    id: 'jobStartDate',
     placeholder: 'Jan 2021',
   },
   END_DATE: {
     as: 'input',
     label: 'End date',
     type: 'text',
-    id: 'end-date',
+    id: 'jobEndDate',
     placeholder: 'Present',
   },
 };
@@ -128,14 +128,14 @@ export const FIELDS_EDUCATION = {
     as: 'input',
     label: 'Start year',
     type: 'number',
-    id: 'start-year',
+    id: 'eduStartYear',
     placeholder: '2013',
   },
   END_YEAR: {
     as: 'input',
     label: 'End year',
     type: 'number',
-    id: 'end-year',
+    id: 'eduEndYear',
     placeholder: '2017',
   },
 };
