@@ -172,7 +172,7 @@ export const initialObj = {
   summary: '',
 
   job1: {
-    id: '',
+    id: createShortId(),
     jobTitle: '',
     company: '',
     companyLocation: '',
@@ -181,7 +181,7 @@ export const initialObj = {
     achievements: '',
   },
   job2: {
-    id: '',
+    id: createShortId(),
     jobTitle: '',
     company: '',
     companyLocation: '',
@@ -190,7 +190,7 @@ export const initialObj = {
     achievements: '',
   },
   job3: {
-    id: '',
+    id: createShortId(),
     jobTitle: '',
     company: '',
     companyLocation: '',
