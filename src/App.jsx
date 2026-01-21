@@ -3,7 +3,8 @@ import './App.css';
 import Header from './components/Header/Header.jsx';
 import Hint from './components/Hint/Hint.jsx';
 import Layout from './components/Layout/Layout.jsx';
-import FormBlock from './components/FormBlock/FormBlock.jsx';
+import SimpleFormBlock from './components/FormBlock/SimpleFormBlock.jsx';
+import { WorkExperienceBlock } from './components/FormBlock/WorkExperienceBlock.jsx';
 import Accordion from './components/Accordion/Accordion.jsx';
 import Cv from './components/Cv/Cv.jsx';
 import {
@@ -12,53 +13,9 @@ import {
   FIELDS_EDUCATION,
   FIELDS_SKILLS,
   FORM_BLOCKS,
+  initialObj,
 } from './config/cvForm.js';
 import Footer from './components/Footer/Footer.jsx';
-
-const initialObj = {
-  image: null,
-  firstName: '',
-  lastName: '',
-  role: '',
-  city: '',
-  phone: '',
-  email: '',
-  linkedIn: '',
-  website: '',
-  summary: '',
-
-  job1: {
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    achievements: '',
-  },
-  job2: {
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    achievements: '',
-  },
-  job3: {
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    achievements: '',
-  },
-
-  degree: '',
-  institution: '',
-  eduStartYear: '',
-  eduEndYear: '',
-
-  skills: '',
-};
 
 function App() {
   const [formData, setFormData] = useState(initialObj);
@@ -81,14 +38,14 @@ function App() {
         <Layout className="user-side">
           <Hint message="Edit this CV with your details" />
           <Layout className="forms-wrapper">
-            <FormBlock
+            <SimpleFormBlock
               title={FORM_BLOCKS.GENERAL}
               inputs={FIELDS_GENERAL}
+              showSaveButton={false}
               onChange={handleChange}
             />
             <Accordion headerTitle={FORM_BLOCKS.WORK_EXPERIENCE}>
-              <FormBlock
-                title={FORM_BLOCKS.WORK_EXPERIENCE}
+              <WorkExperienceBlock
                 inputs={FIELDS_EXPERIENCE}
                 savedJobs={jobs}
                 onChange={handleChange}
@@ -96,13 +53,20 @@ function App() {
               />
             </Accordion>
             <Accordion headerTitle={FORM_BLOCKS.EDUCATION}>
-              <FormBlock
+              <SimpleFormBlock
                 title={FORM_BLOCKS.EDUCATION}
                 inputs={FIELDS_EDUCATION}
+                onChange={handleChange}
+                // onSubmit={handleEducationSubmit}
               />
             </Accordion>
             <Accordion headerTitle={FORM_BLOCKS.SKILLS}>
-              <FormBlock title={FORM_BLOCKS.SKILLS} inputs={FIELDS_SKILLS} />
+              <SimpleFormBlock
+                title={FORM_BLOCKS.SKILLS}
+                inputs={FIELDS_SKILLS}
+                onChange={handleChange}
+                // onSubmit={handleSkillsSubmit}
+              />
             </Accordion>
           </Layout>
         </Layout>

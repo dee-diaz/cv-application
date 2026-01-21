@@ -1,3 +1,5 @@
+import { createShortId } from "../utilities/utils";
+
 export const FORM_BLOCKS = {
   GENERAL: 'General',
   WORK_EXPERIENCE: 'Work experience',
@@ -157,6 +159,54 @@ export const BTN_TYPES = {
   EDIT: 'Edit',
 };
 
+export const initialObj = {
+  image: null,
+  firstName: '',
+  lastName: '',
+  role: '',
+  city: '',
+  phone: '',
+  email: '',
+  linkedIn: '',
+  website: '',
+  summary: '',
+
+  job1: {
+    id: '',
+    jobTitle: '',
+    company: '',
+    companyLocation: '',
+    jobStartDate: '',
+    jobEndDate: '',
+    achievements: '',
+  },
+  job2: {
+    id: '',
+    jobTitle: '',
+    company: '',
+    companyLocation: '',
+    jobStartDate: '',
+    jobEndDate: '',
+    achievements: '',
+  },
+  job3: {
+    id: '',
+    jobTitle: '',
+    company: '',
+    companyLocation: '',
+    jobStartDate: '',
+    jobEndDate: '',
+    achievements: '',
+  },
+
+  degree: '',
+  institution: '',
+  eduStartYear: '',
+  eduEndYear: '',
+
+  skills: '',
+};
+
 export const DUMMY = {
   image: null,
   firstName: 'Francis',
@@ -170,7 +220,7 @@ export const DUMMY = {
   summary:
     'Front-end engineer with a proven track record of delivering production-ready web applications. Specialized in building scalable UI systems, optimizing performance, and ensuring accessibility across modern browsers and devices. Effective collaborator with design and product teams.',
   job1: {
-    id: 'job1',
+    id: createShortId(),
     jobTitle: 'Junior Front-End Developer',
     company: 'Creative Web Agency',
     companyLocation: 'Austin, TX',
@@ -183,7 +233,7 @@ export const DUMMY = {
     ],
   },
   job2: {
-    id: 'job2',
+    id: createShortId(),
     jobTitle: 'UI / Front-End Developer',
     company: 'Digital Studio Co.',
     companyLocation: 'Remote',
@@ -196,7 +246,7 @@ export const DUMMY = {
     ],
   },
   job3: {
-    id: 'job3',
+    id: createShortId(),
     jobTitle: 'Front-End Engineer',
     company: 'Supersite',
     companyLocation: 'Austin, TX',
