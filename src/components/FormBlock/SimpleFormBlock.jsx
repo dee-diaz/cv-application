@@ -7,7 +7,6 @@ import ImageUpload from './ImageUpload.jsx';
 export default function SimpleFormBlock({
   title,
   inputs,
-  showSaveButton = true,
   onChange,
   onSubmit,
 }) {
@@ -34,8 +33,6 @@ export default function SimpleFormBlock({
         {inputsArr.map((input) => (
           <Input key={input.id} onChange={onChange} {...input} />
         ))}
-
-        {showSaveButton && <Button type="submit" btnText={BTN_TYPES.SAVE} />}
       </form>
     </div>
   );

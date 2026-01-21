@@ -41,7 +41,6 @@ function App() {
             <SimpleFormBlock
               title={FORM_BLOCKS.GENERAL}
               inputs={FIELDS_GENERAL}
-              showSaveButton={false}
               onChange={handleChange}
             />
             <Accordion headerTitle={FORM_BLOCKS.WORK_EXPERIENCE}>
