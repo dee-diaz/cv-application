@@ -1,4 +1,4 @@
-import { createShortId } from "../utilities/utils";
+import { createShortId } from '../utilities/utils';
 
 export const FORM_BLOCKS = {
   GENERAL: 'General',
@@ -170,40 +170,10 @@ export const initialObj = {
   linkedIn: '',
   website: '',
   summary: '',
-
-  job1: {
-    id: createShortId(),
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    achievements: '',
-  },
-  job2: {
-    id: createShortId(),
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    achievements: '',
-  },
-  job3: {
-    id: createShortId(),
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    achievements: '',
-  },
-
   degree: '',
   institution: '',
   eduStartYear: '',
   eduEndYear: '',
-
   skills: '',
 };
 
@@ -219,51 +189,35 @@ export const DUMMY = {
   website: 'www.supersite.com',
   summary:
     'Front-end engineer with a proven track record of delivering production-ready web applications. Specialized in building scalable UI systems, optimizing performance, and ensuring accessibility across modern browsers and devices. Effective collaborator with design and product teams.',
-  job1: {
-    id: createShortId(),
-    jobTitle: 'Junior Front-End Developer',
-    company: 'Creative Web Agency',
-    companyLocation: 'Austin, TX',
-    jobStartDate: 'Feb 2017',
-    jobEndDate: 'Oct 2019',
-    achievements: [
-      'Assisted in building and updating client websites using modern front-end technologies',
-      'Implemented responsive layouts and basic animations',
-      'Fixed UI bugs and improved overall usability under senior developer guidance',
-    ],
-  },
-  job2: {
-    id: createShortId(),
-    jobTitle: 'UI / Front-End Developer',
-    company: 'Digital Studio Co.',
-    companyLocation: 'Remote',
-    jobStartDate: 'Jan 2019',
-    jobEndDate: 'Sept 2021',
-    achievements: [
-      'Developed reusable UI components for marketing and product websites',
-      'Translated design mockups into clean, maintainable front-end code',
-      'Worked closely with cross-functional teams to ship features on tight deadlines',
-    ],
-  },
-  job3: {
+  degree: 'Bachelor\’s Degree in Information Technology',
+  institution: 'University of Texas at Austin',
+  eduStartYear: '2013',
+  eduEndYear: '2017',
+  skills:
+    'JavaScript (ES6+) · HTML5 · CSS3 · React · Next.js · Responsive UI · Accessibility (WCAG) · Git · Figma · Node.js ·  Express',
+};
+
+export const DUMMY_JOBS = [
+  // {
+  //   id: createShortId(),
+  //   jobTitle: 'UI / Front-End Developer',
+  //   company: 'Digital Studio Co.',
+  //   companyLocation: 'Remote',
+  //   jobStartDate: 'Jan 2019',
+  //   jobEndDate: 'Sept 2021',
+  //   a1: 'Developed reusable UI components for marketing and product websites',
+  //   a2: 'Translated design mockups into clean, maintainable front-end code',
+  //   a3: 'Worked closely with cross-functional teams to ship features on tight deadlines',
+  // },
+  {
     id: createShortId(),
     jobTitle: 'Front-End Engineer',
     company: 'Supersite',
     companyLocation: 'Austin, TX',
     jobStartDate: 'June 2021',
     jobEndDate: 'Present',
-    achievements: [
-      'Built and maintained responsive user interfaces for a customer-facing web platform',
-      'Collaborated with designers and product managers to implement design systems and UI components',
-      'Improved page performance and accessibility across modern browsers and devices',
-    ],
+    a1: 'Built and maintained responsive user interfaces for a customer-facing web platform',
+    a2: 'Collaborated with designers and product managers to implement design systems and UI components',
+    a3: 'Improved page performance and accessibility across modern browsers and devices',
   },
-
-  degree: 'Bachelor\’s Degree in Information Technology',
-  institution: 'University of Texas at Austin',
-  eduStartYear: '2013',
-  eduEndYear: '2017',
-
-  skills:
-    'JavaScript (ES6+) · HTML5 · CSS3 · React · Next.js · Responsive UI · Accessibility (WCAG) · Git · Figma · Node.js ·  Express',
-};
+];
