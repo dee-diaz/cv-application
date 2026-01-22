@@ -32,17 +32,26 @@ function App() {
     a3: '',
   });
 
-  console.log(currentJobDraft);
-  console.log(jobs);
-
   function handleChange(e) {
     const inputId = e.target.id;
     setFormData({ ...formData, [inputId]: e.target.value });
   }
 
   function handleJobSubmit(jobObj) {
-    jobObj.id = createShortId();
-    setJobs((prev) => [...prev, jobObj]);
+    if (!jobObj.id) {
+      const newJob = { ...jobObj, id: createShortId() };
+      console.log('New object created', newJob);
+      setJobs((prev) => [...prev, newJob]);
+    } else {
+      setJobs((prev) => {
+        const index = prev.findIndex((job) => job.id === jobObj.id);
+        if (index === -1) return prev;
+
+        const updated = [...prev];
+        updated[index] = { ...jobObj };
+        return updated;
+      });
+    }
 
     setCurrentJobDraft({
       jobTitle: '',
@@ -59,6 +68,12 @@ function App() {
   function handleJobChange(e) {
     const inputId = e.target.id;
     setCurrentJobDraft({ ...currentJobDraft, [inputId]: e.target.value });
+  }
+
+  function handleEditJob(jobId) {
+    const job = jobs.find((j) => j.id === jobId);
+    if (!job) return;
+    setCurrentJobDraft({ ...job });
   }
 
   return (
@@ -80,6 +95,7 @@ function App() {
                 currentJob={currentJobDraft}
                 onChange={handleJobChange}
                 onSubmit={handleJobSubmit}
+                onEditJob={handleEditJob}
               />
             </Accordion>
             <Accordion headerTitle={FORM_BLOCKS.EDUCATION}>

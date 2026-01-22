@@ -15,8 +15,8 @@ export default function WorkExperienceBlock({ jobs, currentJob }) {
         <p>{FORM_BLOCKS.WORK_EXPERIENCE}</p>
       </CvCell>
 
-      {jobsToRender.map((job) => (
-        <WorkItem key={job.id} {...job} />
+      {jobsToRender.map((job, index) => (
+        <WorkItem key={job.id ?? `job-${index}`} {...job} />
       ))}
     </CvBlock>
   );
@@ -46,7 +46,7 @@ function WorkItem({
       </div>
       <ul className="achievements">
         {achievements.map((item, i) => (
-          <li key={i}>{item}</li>
+          <li key={`${i}-${item}`}>{item}</li>
         ))}
       </ul>
     </CvCell>

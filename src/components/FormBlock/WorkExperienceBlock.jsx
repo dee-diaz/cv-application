@@ -4,21 +4,34 @@ import { Button } from '../Button/Button.jsx';
 import { BTN_TYPES } from '../../config/cvForm';
 import Input from './Input.jsx';
 
-export function WorkExperienceBlock({ inputs, savedJobs, onChange, onSubmit }) {
-  const [isFormMode, setIsFormMode] = useState(true);
+export function WorkExperienceBlock({
+  inputs,
+  savedJobs,
+  currentJob,
+  onChange,
+  onSubmit,
+  onEditJob,
+}) {
+  const [formMode, setFormMode] = useState({
+    isFormMode: true,
+    isEditMode: false,
+  });
   const inputsArr = Object.values(inputs);
 
   function handleSubmit(e) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const obj = Object.fromEntries(data.entries());
-    onSubmit?.(obj);
-    setIsFormMode(false);
+    onSubmit?.(currentJob);
+    setFormMode({ isFormMode: false, isEditMode: false });
+  }
+
+  function handleEdit(jobId) {
+    setFormMode({ isFormMode: true, isEditMode: true });
+    onEditJob?.(jobId);
   }
 
   return (
     <div className="form-block-wrapper">
-      {isFormMode ? (
+      {formMode.isFormMode ? (
         <form
           className="work-experience"
           name="work-experience"
@@ -26,41 +39,50 @@ export function WorkExperienceBlock({ inputs, savedJobs, onChange, onSubmit }) {
           onSubmit={handleSubmit}
         >
           {inputsArr.map((input) => (
-            <Input key={input.id} onChange={onChange} {...input} />
+            <Input
+              key={input.id}
+              value={currentJob?.[input.id] ?? ''}
+              onChange={onChange}
+              {...input}
+            />
           ))}
 
-          <Achievements onChange={onChange} />
+          <Achievements currentJob={currentJob} onChange={onChange} />
 
           <Button type="submit" btnText={BTN_TYPES.SAVE} />
         </form>
       ) : (
         <>
-          <JobList jobs={savedJobs} onEdit={() => setIsFormMode(true)} />
-          <Button btnText={BTN_TYPES.ADD} onClick={() => setIsFormMode(true)} />
+          <JobList jobs={savedJobs} onEdit={handleEdit} />
+          <Button
+            btnText={BTN_TYPES.ADD}
+            onClick={() => setFormMode({ isFormMode: true, isEditMode: false })}
+          />
         </>
       )}
     </div>
   );
 }
 
-function Achievements({ onChange }) {
+function Achievements({ currentJob, onChange }) {
   return (
     <fieldset className="field-group" aria-describedby="achievements-help">
       <legend>Achievements or responsibilities</legend>
       <p id="achievements-help">
         Describe what you achieved or built in this role (3 max)
       </p>
-
       <ol className="achievements">
-        <li>
-          <Input name="a1" id="a1" type="text" onChange={onChange} aria-label="Achievement 1" />
-        </li>
-        <li>
-          <Input name="a2" id="a2" type="text" onChange={onChange} aria-label="Achievement 2" />
-        </li>
-        <li>
-          <Input name="a3" id="a3" type="text" onChange={onChange} aria-label="Achievement 3" />
-        </li>
+        {[1, 2, 3].map((i) => (
+          <li key={i}>
+            <Input
+              name={`a${i}`}
+              id={`a${i}`}
+              value={currentJob?.[`a${i}`] ?? ""}
+              onChange={onChange}
+              aria-label={`Achievement ${i}`}
+            />
+          </li>
+        ))}
       </ol>
     </fieldset>
   );
@@ -72,6 +94,7 @@ function JobList({ jobs, onEdit }) {
       {jobs.map((job, index) => (
         <JobItem
           key={job.id || index}
+          jobId={job.id || index}
           jobTitle={job.jobTitle}
           company={job.company}
           startDate={job.jobStartDate}
@@ -83,7 +106,7 @@ function JobList({ jobs, onEdit }) {
   );
 }
 
-function JobItem({ jobTitle, company, startDate, endDate, onEdit }) {
+function JobItem({ jobId, jobTitle, company, startDate, endDate, onEdit }) {
   return (
     <li className="job-item">
       <div>
@@ -92,7 +115,7 @@ function JobItem({ jobTitle, company, startDate, endDate, onEdit }) {
         <p className="dates">{`${startDate} - ${endDate}`}</p>
       </div>
 
-      <button type="button" onClick={onEdit} aria-label="Edit job">
+      <button type="button" onClick={() => onEdit(jobId)} aria-label="Edit job">
         <svg
           width="20"
           height="20"

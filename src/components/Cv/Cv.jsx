@@ -1,5 +1,4 @@
 import './Cv.css';
-import { FORM_BLOCKS, DUMMY, DUMMY_JOBS } from '../../config/cvForm';
 import GeneralInfoBlock from './GeneralInfoBlock';
 import WorkExperienceBlock from './WorkExperienceBlock';
 import EducationBlock from './EducationBlock';
