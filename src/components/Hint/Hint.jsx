@@ -1,6 +1,6 @@
 import './Hint.css';
 
-export default function Hint({ message }) {
+export default function Hint() {
   return (
     <div className="hint">
       <svg
@@ -14,7 +14,7 @@ export default function Hint({ message }) {
           fill="#060606"
         />
       </svg>
-      <p>{message}</p>
+      <p>Edit this CV with your details</p>
     </div>
   );
 }
