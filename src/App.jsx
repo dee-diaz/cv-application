@@ -16,6 +16,7 @@ import {
   initialObj,
 } from './config/cvForm.js';
 import Footer from './components/Footer/Footer.jsx';
+import { createShortId } from './utilities/utils.js';
 
 function App() {
   const [formData, setFormData] = useState(initialObj);
@@ -40,6 +41,7 @@ function App() {
   }
 
   function handleJobSubmit(jobObj) {
+    jobObj.id = createShortId();
     setJobs((prev) => [...prev, jobObj]);
 
     setCurrentJobDraft({

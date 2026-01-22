@@ -1,5 +1,5 @@
 export function createShortId() {
-  const timestamp = Date.now().toString(36);
-  const randomness = Math.random().toString(36).substring(2);
-  return `${timestamp}${randomness}`;
+  const timePart = Date.now().toString(36).slice(-2);
+  const randPart = Math.random().toString(36).slice(2, 8);
+  return timePart + randPart;
 }
