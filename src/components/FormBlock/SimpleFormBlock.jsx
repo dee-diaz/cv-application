@@ -1,7 +1,6 @@
 import './FormBlock.css';
 import Input from './Input';
-import { FORM_BLOCKS, BTN_TYPES } from '../../config/cvForm';
-import { Button } from '../Button/Button.jsx';
+import { FORM_BLOCKS } from '../../config/cvForm';
 import ImageUpload from './ImageUpload.jsx';
 
 export default function SimpleFormBlock({

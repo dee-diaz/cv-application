@@ -1,11 +1,11 @@
 import './Cv.css';
-import { FORM_BLOCKS, DUMMY } from '../../config/cvForm';
+import { FORM_BLOCKS, DUMMY, DUMMY_JOBS } from '../../config/cvForm';
 import GeneralInfoBlock from './GeneralInfoBlock';
 import WorkExperienceBlock from './WorkExperienceBlock';
 import EducationBlock from './EducationBlock';
 import SkillsBlock from './SkillsBlock';
 
-export default function Cv({ data }) {
+export default function Cv({ data, jobs, currentJob }) {
   const {
     firstName,
     lastName,
@@ -29,7 +29,6 @@ export default function Cv({ data }) {
     website,
     summary,
   };
-  const workProps = [DUMMY.job3, DUMMY.job2, DUMMY.job1];
   const eduProps = {
     degree,
     institution,
@@ -40,7 +39,7 @@ export default function Cv({ data }) {
   return (
     <div id="cv" className="cv">
       <GeneralInfoBlock data={generalProps} />
-      <WorkExperienceBlock data={workProps} />
+      <WorkExperienceBlock jobs={jobs} currentJob={currentJob} />
       <EducationBlock data={eduProps} />
       <SkillsBlock skills={data.skills} />
     </div>

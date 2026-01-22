@@ -29,7 +29,7 @@ export function WorkExperienceBlock({ inputs, savedJobs, onChange, onSubmit }) {
             <Input key={input.id} onChange={onChange} {...input} />
           ))}
 
-          <Achievements />
+          <Achievements onChange={onChange} />
 
           <Button type="submit" btnText={BTN_TYPES.SAVE} />
         </form>
@@ -43,7 +43,7 @@ export function WorkExperienceBlock({ inputs, savedJobs, onChange, onSubmit }) {
   );
 }
 
-function Achievements() {
+function Achievements({ onChange }) {
   return (
     <fieldset className="field-group" aria-describedby="achievements-help">
       <legend>Achievements or responsibilities</legend>
@@ -53,13 +53,13 @@ function Achievements() {
 
       <ol className="achievements">
         <li>
-          <Input name="a1" id="a1" type="text" aria-label="Achievement 1" />
+          <Input name="a1" id="a1" type="text" onChange={onChange} aria-label="Achievement 1" />
         </li>
         <li>
-          <Input name="a2" id="a2" type="text" aria-label="Achievement 2" />
+          <Input name="a2" id="a2" type="text" onChange={onChange} aria-label="Achievement 2" />
         </li>
         <li>
-          <Input name="a3" id="a3" type="text" aria-label="Achievement 3" />
+          <Input name="a3" id="a3" type="text" onChange={onChange} aria-label="Achievement 3" />
         </li>
       </ol>
     </fieldset>

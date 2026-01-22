@@ -32,7 +32,6 @@
     &.work-experience {
       grid-column: span 2;
       border-top: none;
-      grid-template-rows: minmax(3.25rem, auto) repeat(3, minmax(9rem, auto));
 
       .cell-title {
         border-bottom: none;

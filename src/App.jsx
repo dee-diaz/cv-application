@@ -20,15 +20,43 @@ import Footer from './components/Footer/Footer.jsx';
 function App() {
   const [formData, setFormData] = useState(initialObj);
   const [jobs, setJobs] = useState([]);
+  const [currentJobDraft, setCurrentJobDraft] = useState({
+    jobTitle: '',
+    company: '',
+    companyLocation: '',
+    jobStartDate: '',
+    jobEndDate: '',
+    a1: '',
+    a2: '',
+    a3: '',
+  });
+
+  console.log(currentJobDraft);
+  console.log(jobs);
 
   function handleChange(e) {
     const inputId = e.target.id;
-    const updatedObj = { ...formData, [inputId]: e.target.value };
-    setFormData(updatedObj);
+    setFormData({ ...formData, [inputId]: e.target.value });
   }
 
   function handleJobSubmit(jobObj) {
     setJobs((prev) => [...prev, jobObj]);
+
+    setCurrentJobDraft({
+      jobTitle: '',
+      company: '',
+      companyLocation: '',
+      jobStartDate: '',
+      jobEndDate: '',
+      a1: '',
+      a2: '',
+      a3: '',
+    });
+  }
+
+  function handleJobChange(e) {
+    const inputId = e.target.id;
+    setCurrentJobDraft({ ...currentJobDraft, [inputId]: e.target.value });
   }
 
   return (
@@ -36,7 +64,7 @@ function App() {
       <Header />
       <Layout as="main" className="page">
         <Layout className="user-side">
-          <Hint message="Edit this CV with your details" />
+          <Hint />
           <Layout className="forms-wrapper">
             <SimpleFormBlock
               title={FORM_BLOCKS.GENERAL}
@@ -47,7 +75,9 @@ function App() {
               <WorkExperienceBlock
                 inputs={FIELDS_EXPERIENCE}
                 savedJobs={jobs}
-                onChange={handleChange}
+                currentJob={currentJobDraft}
+                // onChange={handleChange}
+                onChange={handleJobChange}
                 onSubmit={handleJobSubmit}
               />
             </Accordion>
@@ -56,7 +86,6 @@ function App() {
                 title={FORM_BLOCKS.EDUCATION}
                 inputs={FIELDS_EDUCATION}
                 onChange={handleChange}
-                // onSubmit={handleEducationSubmit}
               />
             </Accordion>
             <Accordion headerTitle={FORM_BLOCKS.SKILLS}>
@@ -64,13 +93,12 @@ function App() {
                 title={FORM_BLOCKS.SKILLS}
                 inputs={FIELDS_SKILLS}
                 onChange={handleChange}
-                // onSubmit={handleSkillsSubmit}
               />
             </Accordion>
           </Layout>
         </Layout>
         <Layout className="cv-side">
-          <Cv data={formData} />
+          <Cv data={formData} jobs={jobs} currentJob={currentJobDraft} />
         </Layout>
       </Layout>
       <Footer />
