@@ -39,7 +39,9 @@ function WorkItem({
       <div className="general">
         <p className="role">{jobTitle}</p>
         <p className="company">{company}</p>
-        <p className="dates">{`${jobStartDate} - ${jobEndDate}`}</p>
+        {(jobStartDate || jobEndDate) && (
+          <p className="dates">{`${jobStartDate} - ${jobEndDate}`}</p>
+        )}
         <p className="location">{companyLocation}</p>
       </div>
       <ul className="achievements">
