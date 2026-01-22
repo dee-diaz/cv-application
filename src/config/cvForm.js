@@ -209,4 +209,15 @@ export const DUMMY_JOBS = [
     a2: 'Collaborated with designers and product managers to implement design systems and UI components',
     a3: 'Improved page performance and accessibility across modern browsers and devices',
   },
+  // {
+  //   id: createShortId(),
+  //   jobTitle: 'Front-End Engineer',
+  //   company: 'PeakLabs',
+  //   companyLocation: 'Austin, TX',
+  //   jobStartDate: 'June 2021',
+  //   jobEndDate: 'Present',
+  //   a1: 'Built and shipped a React component library used across 6 internal products',
+  //   a2: 'Improved Core Web Vitals (LCP -35%, CLS -60%) by optimizing images and rendering',
+  //   a3: 'Refactored legacy UI into reusable modules, cutting feature delivery time by ~30%',
+  // },
 ];
