@@ -2,7 +2,13 @@ import { CvBlock, CvCell } from './Cv';
 import { FORM_BLOCKS, DUMMY_JOBS } from '../../config/cvForm';
 
 export default function WorkExperienceBlock({ jobs, currentJob }) {
-  const jobsToRender = (jobs.length === 0) ? DUMMY_JOBS : jobs;
+  const hasCurrentJobData = Object.values(currentJob).some(
+    (val) => val && val.toString().trim() !== '',
+  );
+
+  const jobsToRender =
+    jobs.length > 0 ? jobs : hasCurrentJobData ? [currentJob] : DUMMY_JOBS;
+
   return (
     <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
       <CvCell className="cell-title">

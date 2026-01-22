@@ -76,7 +76,6 @@ function App() {
                 inputs={FIELDS_EXPERIENCE}
                 savedJobs={jobs}
                 currentJob={currentJobDraft}
-                // onChange={handleChange}
                 onChange={handleJobChange}
                 onSubmit={handleJobSubmit}
               />

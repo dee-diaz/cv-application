@@ -198,17 +198,6 @@ export const DUMMY = {
 };
 
 export const DUMMY_JOBS = [
-  // {
-  //   id: createShortId(),
-  //   jobTitle: 'UI / Front-End Developer',
-  //   company: 'Digital Studio Co.',
-  //   companyLocation: 'Remote',
-  //   jobStartDate: 'Jan 2019',
-  //   jobEndDate: 'Sept 2021',
-  //   a1: 'Developed reusable UI components for marketing and product websites',
-  //   a2: 'Translated design mockups into clean, maintainable front-end code',
-  //   a3: 'Worked closely with cross-functional teams to ship features on tight deadlines',
-  // },
   {
     id: createShortId(),
     jobTitle: 'Front-End Engineer',
