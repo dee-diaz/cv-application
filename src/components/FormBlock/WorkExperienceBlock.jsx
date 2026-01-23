@@ -58,13 +58,25 @@ export function WorkExperienceBlock({
           <div className="actions">
             {formMode.isEditMode ? (
               <>
-              <Button btnText={BTN_TYPES.DELETE} onClick={handleDelete} className="delete" />
-              <div>
-                <Button btnText={BTN_TYPES.CANCEL} className="cancel" />
-                <Button type="submit" btnText={BTN_TYPES.SAVE} />
-              </div>
+                <Button
+                  btnText={BTN_TYPES.DELETE}
+                  onClick={handleDelete}
+                  className="delete"
+                />
+                <div>
+                  <Button
+                    btnText={BTN_TYPES.CANCEL}
+                    className="cancel"
+                    onClick={() =>
+                      setFormMode({ isFormMode: false, isEditMode: false })
+                    }
+                  />
+                  <Button type="submit" btnText={BTN_TYPES.SAVE} />
+                </div>
               </>
-            ) : <Button type="submit" btnText={BTN_TYPES.SAVE} />}
+            ) : (
+              <Button type="submit" btnText={BTN_TYPES.SAVE} />
+            )}
           </div>
         </form>
       ) : (
