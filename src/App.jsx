@@ -27,7 +27,7 @@ function App() {
 
   function handleChange(e) {
     const inputId = e.target.id;
-    setFormData({ ...formData, [inputId]: e.target.value });
+    setFormData(prev => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
@@ -51,7 +51,7 @@ function App() {
 
   function handleJobChange(e) {
     const inputId = e.target.id;
-    setCurrentJobDraft({ ...currentJobDraft, [inputId]: e.target.value });
+    setCurrentJobDraft(prev => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
