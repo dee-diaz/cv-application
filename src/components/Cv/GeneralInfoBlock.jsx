@@ -28,7 +28,7 @@ export default function GeneralInfoBlock({ data, touchedFields }) {
       </CvCell>
 
       <CvCell className="photo">
-        <img src="/photo.webp" alt="Photo of a candidate" />
+        <img src={data.photoUrl || "/photo.webp"} alt="Photo of a candidate" />
       </CvCell>
 
       <CvCell className="cell-title">

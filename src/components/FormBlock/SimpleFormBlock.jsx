@@ -8,6 +8,7 @@ export default function SimpleFormBlock({
   inputs,
   onChange,
   onSubmit,
+  onPhotoChange,
 }) {
   const formId = title.toLowerCase().replace(/\s+/g, '-');
   const inputsArr = Object.values(inputs);
@@ -21,7 +22,9 @@ export default function SimpleFormBlock({
 
   return (
     <div className="form-block-wrapper">
-      {title === FORM_BLOCKS.GENERAL && <ImageUpload formId={formId} />}
+      {title === FORM_BLOCKS.GENERAL && (
+        <ImageUpload formId={formId} onPhotoChange={onPhotoChange} />
+      )}
 
       <form
         className={formId}

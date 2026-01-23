@@ -14,7 +14,7 @@ import {
   FIELDS_SKILLS,
   FORM_BLOCKS,
   initialObj,
-  jobInitial
+  jobInitial,
 } from './config/cvForm.js';
 import Footer from './components/Footer/Footer.jsx';
 import { createShortId } from './utilities/utils.js';
@@ -25,9 +25,17 @@ function App() {
   const [currentJobDraft, setCurrentJobDraft] = useState(jobInitial);
   const [touchedFields, setTouchedFields] = useState({});
 
+  function handlePhotoChange(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+    setFormData((prev) => ({ ...prev, photoUrl: url }));
+  }
+
   function handleChange(e) {
     const inputId = e.target.id;
-    setFormData(prev => ({ ...prev, [inputId]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
@@ -51,7 +59,7 @@ function App() {
 
   function handleJobChange(e) {
     const inputId = e.target.id;
-    setCurrentJobDraft(prev => ({ ...prev, [inputId]: e.target.value }));
+    setCurrentJobDraft((prev) => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
@@ -62,7 +70,7 @@ function App() {
   }
 
   function handleDeleteJob(jobId) {
-    setJobs(prev => prev.filter(job => job.id !== jobId));
+    setJobs((prev) => prev.filter((job) => job.id !== jobId));
     setCurrentJobDraft(jobInitial);
   }
 
@@ -77,6 +85,7 @@ function App() {
               title={FORM_BLOCKS.GENERAL}
               inputs={FIELDS_GENERAL}
               onChange={handleChange}
+              onPhotoChange={handlePhotoChange}
             />
             <Accordion headerTitle={FORM_BLOCKS.WORK_EXPERIENCE}>
               <WorkExperienceBlock
@@ -106,7 +115,12 @@ function App() {
           </Layout>
         </Layout>
         <Layout className="cv-side">
-          <Cv data={formData} jobs={jobs} currentJob={currentJobDraft} touchedFields={touchedFields} />
+          <Cv
+            data={formData}
+            jobs={jobs}
+            currentJob={currentJobDraft}
+            touchedFields={touchedFields}
+          />
         </Layout>
       </Layout>
       <Footer />

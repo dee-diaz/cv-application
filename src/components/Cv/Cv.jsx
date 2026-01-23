@@ -15,6 +15,7 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
     linkedIn,
     website,
     summary,
+    photoUrl,
   } = data;
   const { degree, institution, eduStartYear, eduEndYear } = data;
   const generalProps = {
@@ -27,6 +28,7 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
     linkedIn,
     website,
     summary,
+    photoUrl,
   };
   const eduProps = {
     degree,
@@ -38,7 +40,11 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
   return (
     <div id="cv" className="cv">
       <GeneralInfoBlock data={generalProps} touchedFields={touchedFields} />
-      <WorkExperienceBlock jobs={jobs} touchedFields={touchedFields} currentJob={currentJob} />
+      <WorkExperienceBlock
+        jobs={jobs}
+        touchedFields={touchedFields}
+        currentJob={currentJob}
+      />
       <EducationBlock data={eduProps} touchedFields={touchedFields} />
       <SkillsBlock skills={data.skills} touchedFields={touchedFields} />
     </div>

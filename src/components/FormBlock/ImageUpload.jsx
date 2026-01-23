@@ -1,4 +1,4 @@
-export default function ImageUpload({ formId }) {
+export default function ImageUpload({ formId, onPhotoChange }) {
   return (
     <div className="img-upload">
       <div>
@@ -32,7 +32,7 @@ export default function ImageUpload({ formId }) {
           />
         </svg>
         Upload
-        <input type="file" accept="image/*" form={formId} hidden />
+        <input type="file" accept="image/*" form={formId} hidden onChange={onPhotoChange} />
       </label>
     </div>
   );
