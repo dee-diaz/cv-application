@@ -1,10 +1,61 @@
+import { forwardRef } from "react";
 import './Cv.css';
 import GeneralInfoBlock from './GeneralInfoBlock';
 import WorkExperienceBlock from './WorkExperienceBlock';
 import EducationBlock from './EducationBlock';
 import SkillsBlock from './SkillsBlock';
 
-export default function Cv({ data, jobs, currentJob, touchedFields }) {
+// export default function Cv({ data, jobs, currentJob, touchedFields, ref }) {
+//   const {
+//     firstName,
+//     lastName,
+//     email,
+//     phone,
+//     city,
+//     role,
+//     linkedIn,
+//     website,
+//     summary,
+//     photoUrl,
+//   } = data;
+//   const { degree, institution, eduStartYear, eduEndYear } = data;
+//   const generalProps = {
+//     firstName,
+//     lastName,
+//     email,
+//     phone,
+//     city,
+//     role,
+//     linkedIn,
+//     website,
+//     summary,
+//     photoUrl,
+//   };
+//   const eduProps = {
+//     degree,
+//     institution,
+//     eduStartYear,
+//     eduEndYear,
+//   };
+
+//   return (
+//     <div id="cv" className="cv">
+//       <GeneralInfoBlock data={generalProps} touchedFields={touchedFields} />
+//       <WorkExperienceBlock
+//         jobs={jobs}
+//         touchedFields={touchedFields}
+//         currentJob={currentJob}
+//       />
+//       <EducationBlock data={eduProps} touchedFields={touchedFields} />
+//       <SkillsBlock skills={data.skills} touchedFields={touchedFields} />
+//     </div>
+//   );
+// }
+
+const Cv = forwardRef(function Cv(
+  { data, jobs, currentJob, touchedFields },
+  ref
+) {
   const {
     firstName,
     lastName,
@@ -17,7 +68,9 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
     summary,
     photoUrl,
   } = data;
+
   const { degree, institution, eduStartYear, eduEndYear } = data;
+
   const generalProps = {
     firstName,
     lastName,
@@ -30,6 +83,7 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
     summary,
     photoUrl,
   };
+
   const eduProps = {
     degree,
     institution,
@@ -38,7 +92,7 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
   };
 
   return (
-    <div id="cv" className="cv">
+    <div ref={ref} id="cv" className="cv">
       <GeneralInfoBlock data={generalProps} touchedFields={touchedFields} />
       <WorkExperienceBlock
         jobs={jobs}
@@ -49,7 +103,9 @@ export default function Cv({ data, jobs, currentJob, touchedFields }) {
       <SkillsBlock skills={data.skills} touchedFields={touchedFields} />
     </div>
   );
-}
+});
+
+export default Cv;
 
 export function CvBlock({ blockName, children }) {
   const blockId = blockName.toLowerCase().replace(' ', '-');

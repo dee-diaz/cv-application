@@ -88,13 +88,9 @@ export function Button({ type = 'button', className, btnText, onClick }) {
   );
 }
 
-export function DownloadButton() {
-  function previewPdf() {
-    console.log('PDF preview mode');
-  }
-
+export function DownloadButton({ onClick }) {
   return (
-    <button className="btn-download" type="button" onClick={previewPdf}>
+    <button className="btn-download" type="button" onClick={onClick}>
       <span>Download CV</span>
       <div>
         <svg

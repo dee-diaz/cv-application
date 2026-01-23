@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import Hint from './components/Hint/Hint.jsx';
@@ -24,6 +26,13 @@ function App() {
   const [jobs, setJobs] = useState([]);
   const [currentJobDraft, setCurrentJobDraft] = useState(jobInitial);
   const [touchedFields, setTouchedFields] = useState({});
+
+  const cvRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    contentRef: cvRef,
+    documentTitle: "cv",
+  });
 
   function handlePhotoChange(e) {
     const file = e.target.files?.[0];
@@ -76,7 +85,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
+      <Header onDownload={handlePrint} />
       <Layout as="main" className="page">
         <Layout className="user-side">
           <Hint />
@@ -116,6 +125,7 @@ function App() {
         </Layout>
         <Layout className="cv-side">
           <Cv
+            ref={cvRef}
             data={formData}
             jobs={jobs}
             currentJob={currentJobDraft}
