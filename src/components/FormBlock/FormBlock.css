@@ -10,10 +10,6 @@
 
   &:has(.job-item) {
     padding: 0 0 1rem;
-
-    .btn {
-      margin: 0 1rem 0 0;
-    }
   }
 
   form {
@@ -49,6 +45,22 @@
       + p {
         color: rgba(6, 6, 6, 0.8);
         margin-bottom: 0.625rem;
+      }
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:has(> :only-child) {
+        justify-content: end;
+      }
+
+      > div {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
       }
     }
   }
@@ -149,7 +161,7 @@ ul:has(.job-item) {
 
     label:has(textarea, input#jobTitle, input#degree, input#institution),
     fieldset,
-    button {
+    .actions {
       grid-column: span 2;
     }
   }

@@ -18,19 +18,21 @@ import {
 import Footer from './components/Footer/Footer.jsx';
 import { createShortId } from './utilities/utils.js';
 
+const jobInitial = {
+  jobTitle: '',
+  company: '',
+  companyLocation: '',
+  jobStartDate: '',
+  jobEndDate: '',
+  a1: '',
+  a2: '',
+  a3: '',
+};
+
 function App() {
   const [formData, setFormData] = useState(initialObj);
   const [jobs, setJobs] = useState([]);
-  const [currentJobDraft, setCurrentJobDraft] = useState({
-    jobTitle: '',
-    company: '',
-    companyLocation: '',
-    jobStartDate: '',
-    jobEndDate: '',
-    a1: '',
-    a2: '',
-    a3: '',
-  });
+  const [currentJobDraft, setCurrentJobDraft] = useState(jobInitial);
 
   function handleChange(e) {
     const inputId = e.target.id;
@@ -40,7 +42,6 @@ function App() {
   function handleJobSubmit(jobObj) {
     if (!jobObj.id) {
       const newJob = { ...jobObj, id: createShortId() };
-      console.log('New object created', newJob);
       setJobs((prev) => [...prev, newJob]);
     } else {
       setJobs((prev) => {
@@ -53,16 +54,7 @@ function App() {
       });
     }
 
-    setCurrentJobDraft({
-      jobTitle: '',
-      company: '',
-      companyLocation: '',
-      jobStartDate: '',
-      jobEndDate: '',
-      a1: '',
-      a2: '',
-      a3: '',
-    });
+    setCurrentJobDraft(jobInitial);
   }
 
   function handleJobChange(e) {
@@ -74,6 +66,11 @@ function App() {
     const job = jobs.find((j) => j.id === jobId);
     if (!job) return;
     setCurrentJobDraft({ ...job });
+  }
+
+  function handleDeleteJob(jobId) {
+    setJobs(prev => prev.filter(job => job.id !== jobId));
+    setCurrentJobDraft(jobInitial);
   }
 
   return (
@@ -96,6 +93,7 @@ function App() {
                 onChange={handleJobChange}
                 onSubmit={handleJobSubmit}
                 onEditJob={handleEditJob}
+                onDeleteJob={handleDeleteJob}
               />
             </Accordion>
             <Accordion headerTitle={FORM_BLOCKS.EDUCATION}>

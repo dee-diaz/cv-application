@@ -5,6 +5,7 @@
   --clr-border: var(--clr-neutral-black);
   --clr-surface-primary: var(--clr-neutral-off-white);
   --clr-accent-orange: hsla(11, 99%, 60%, 1);
+  --clr-error: hsla(0, 83%, 61%, 1);
 }
 
 @font-face {

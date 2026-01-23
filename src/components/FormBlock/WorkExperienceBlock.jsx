@@ -11,6 +11,7 @@ export function WorkExperienceBlock({
   onChange,
   onSubmit,
   onEditJob,
+  onDeleteJob,
 }) {
   const [formMode, setFormMode] = useState({
     isFormMode: true,
@@ -27,6 +28,11 @@ export function WorkExperienceBlock({
   function handleEdit(jobId) {
     setFormMode({ isFormMode: true, isEditMode: true });
     onEditJob?.(jobId);
+  }
+
+  function handleDelete() {
+    onDeleteJob?.(currentJob.id);
+    setFormMode({ isFormMode: false, isEditMode: false });
   }
 
   return (
@@ -49,13 +55,24 @@ export function WorkExperienceBlock({
 
           <Achievements currentJob={currentJob} onChange={onChange} />
 
-          <Button type="submit" btnText={BTN_TYPES.SAVE} />
+          <div className="actions">
+            {formMode.isEditMode ? (
+              <>
+              <Button btnText={BTN_TYPES.DELETE} onClick={handleDelete} className="delete" />
+              <div>
+                <Button btnText={BTN_TYPES.CANCEL} className="cancel" />
+                <Button type="submit" btnText={BTN_TYPES.SAVE} />
+              </div>
+              </>
+            ) : <Button type="submit" btnText={BTN_TYPES.SAVE} />}
+          </div>
         </form>
       ) : (
         <>
           <JobList jobs={savedJobs} onEdit={handleEdit} />
           <Button
             btnText={BTN_TYPES.ADD}
+            className="add"
             onClick={() => setFormMode({ isFormMode: true, isEditMode: false })}
           />
         </>
@@ -77,7 +94,7 @@ function Achievements({ currentJob, onChange }) {
             <Input
               name={`a${i}`}
               id={`a${i}`}
-              value={currentJob?.[`a${i}`] ?? ""}
+              value={currentJob?.[`a${i}`] ?? ''}
               onChange={onChange}
               aria-label={`Achievement ${i}`}
             />

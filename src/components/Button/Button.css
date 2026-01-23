@@ -16,6 +16,35 @@
   margin: 0;
   margin-top: 0.75rem;
   transition: background 0.2s ease;
+  height: 2.5rem;
+
+  &.add {
+    margin: 0 1rem 0 0;
+  }
+
+  &.delete,
+  &.cancel {
+    background: transparent;
+    border: 1px solid;
+  }
+
+  &.delete {
+    border-color: var(--clr-error);
+    color: var(--clr-error);
+
+    &:hover {
+      background: hsla(0, 83%, 61%, 0.1);
+    }
+  }
+
+  &.cancel {
+    border-color: var(--clr-text-primary);
+    color: var(--clr-text-primary);
+
+    &:hover {
+      background: hsla(0, 0%, 2%, 0.1);
+    }
+  }
 
   &:hover {
     background: hsla(0, 0%, 2%, 0.8);
