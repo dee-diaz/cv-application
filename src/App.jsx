@@ -14,6 +14,7 @@ import {
   FIELDS_SKILLS,
   FORM_BLOCKS,
   initialObj,
+  jobInitial
 } from './config/cvForm.js';
 import Footer from './components/Footer/Footer.jsx';
 import { createShortId } from './utilities/utils.js';

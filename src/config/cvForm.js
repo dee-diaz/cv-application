@@ -177,6 +177,17 @@ export const initialObj = {
   skills: '',
 };
 
+export const jobInitial = {
+  jobTitle: '',
+  company: '',
+  companyLocation: '',
+  jobStartDate: '',
+  jobEndDate: '',
+  a1: '',
+  a2: '',
+  a3: '',
+};
+
 export const DUMMY = {
   image: null,
   firstName: 'Francis',
