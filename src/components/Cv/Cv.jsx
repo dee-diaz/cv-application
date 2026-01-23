@@ -4,7 +4,7 @@ import WorkExperienceBlock from './WorkExperienceBlock';
 import EducationBlock from './EducationBlock';
 import SkillsBlock from './SkillsBlock';
 
-export default function Cv({ data, jobs, currentJob }) {
+export default function Cv({ data, jobs, currentJob, touchedFields }) {
   const {
     firstName,
     lastName,
@@ -37,10 +37,10 @@ export default function Cv({ data, jobs, currentJob }) {
 
   return (
     <div id="cv" className="cv">
-      <GeneralInfoBlock data={generalProps} />
-      <WorkExperienceBlock jobs={jobs} currentJob={currentJob} />
-      <EducationBlock data={eduProps} />
-      <SkillsBlock skills={data.skills} />
+      <GeneralInfoBlock data={generalProps} touchedFields={touchedFields} />
+      <WorkExperienceBlock jobs={jobs} touchedFields={touchedFields} currentJob={currentJob} />
+      <EducationBlock data={eduProps} touchedFields={touchedFields} />
+      <SkillsBlock skills={data.skills} touchedFields={touchedFields} />
     </div>
   );
 }

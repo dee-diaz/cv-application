@@ -19,25 +19,16 @@ import {
 import Footer from './components/Footer/Footer.jsx';
 import { createShortId } from './utilities/utils.js';
 
-const jobInitial = {
-  jobTitle: '',
-  company: '',
-  companyLocation: '',
-  jobStartDate: '',
-  jobEndDate: '',
-  a1: '',
-  a2: '',
-  a3: '',
-};
-
 function App() {
   const [formData, setFormData] = useState(initialObj);
   const [jobs, setJobs] = useState([]);
   const [currentJobDraft, setCurrentJobDraft] = useState(jobInitial);
+  const [touchedFields, setTouchedFields] = useState({});
 
   function handleChange(e) {
     const inputId = e.target.id;
     setFormData({ ...formData, [inputId]: e.target.value });
+    setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
   function handleJobSubmit(jobObj) {
@@ -61,6 +52,7 @@ function App() {
   function handleJobChange(e) {
     const inputId = e.target.id;
     setCurrentJobDraft({ ...currentJobDraft, [inputId]: e.target.value });
+    setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
   function handleEditJob(jobId) {
@@ -114,7 +106,7 @@ function App() {
           </Layout>
         </Layout>
         <Layout className="cv-side">
-          <Cv data={formData} jobs={jobs} currentJob={currentJobDraft} />
+          <Cv data={formData} jobs={jobs} currentJob={currentJobDraft} touchedFields={touchedFields} />
         </Layout>
       </Layout>
       <Footer />

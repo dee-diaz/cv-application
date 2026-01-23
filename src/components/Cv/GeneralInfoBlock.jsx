@@ -1,19 +1,30 @@
-import ContactItem from "./ContactItem";
-import Icons from "./Icons";
-import { CvBlock, CvCell } from "./Cv";
+import ContactItem from './ContactItem';
+import Icons from './Icons';
+import { CvBlock, CvCell } from './Cv';
 import { FORM_BLOCKS, DUMMY } from '../../config/cvForm';
 
-export default function GeneralInfoBlock({ data }) {
-  const firstName = !data.firstName ? DUMMY.firstName : data.firstName;
-  const lastName = !data.lastName ? DUMMY.lastName : data.lastName;
-  const linkedIn = !data.linkedIn ? DUMMY.linkedIn : data.linkedIn;
-  const website = !data.website ? DUMMY.website : data.website;
+export default function GeneralInfoBlock({ data, touchedFields }) {
+  let fields = {
+    firstName: !data.firstName ? DUMMY.firstName : data.firstName,
+    lastName: !data.lastName ? DUMMY.lastName : data.lastName,
+    role: !data.role ? DUMMY.role : data.role,
+    city: !data.city ? DUMMY.city : data.city,
+    phone: !data.phone ? DUMMY.phone : data.phone,
+    email: !data.email ? DUMMY.email : data.email,
+    linkedIn: !data.linkedIn ? DUMMY.linkedIn : data.linkedIn,
+    website: !data.website ? DUMMY.website : data.website,
+    summary: !data.summary ? DUMMY.summary : data.summary,
+  };
+
+  Object.keys(touchedFields).forEach((field) => {
+    if (!data[field]) fields[field] = '';
+  });
 
   return (
     <CvBlock blockName={FORM_BLOCKS.GENERAL}>
       <CvCell className="name-role">
-        <h2>{`${firstName} ${lastName}`}</h2>
-        <h3>{!data.role ? DUMMY.role : data.role}</h3>
+        <h2>{`${fields.firstName} ${fields.lastName}`}</h2>
+        <h3>{fields.role}</h3>
       </CvCell>
 
       <CvCell className="photo">
@@ -27,30 +38,30 @@ export default function GeneralInfoBlock({ data }) {
       <CvCell className="contact-info">
         <ul>
           <ContactItem icon={Icons.Location}>
-            {!data.city ? DUMMY.city : data.city}
+            {fields.city}
           </ContactItem>
           <ContactItem icon={Icons.Phone}>
-            {!data.phone ? DUMMY.phone : data.phone}
+            {fields.phone}
           </ContactItem>
           <ContactItem icon={Icons.Email}>
-            {!data.email ? DUMMY.email : data.email}
+            {fields.email}
           </ContactItem>
         </ul>
       </CvCell>
       <CvCell className="contact-info r-edge">
         <ul>
-          <ContactItem icon={Icons.LinkedIn} href={linkedIn}>
-            {linkedIn}
+          <ContactItem icon={Icons.LinkedIn} href={fields.linkedIn}>
+            {fields.linkedIn}
           </ContactItem>
-          <ContactItem icon={Icons.Website} href={website}>
-            {website}
+          <ContactItem icon={Icons.Website} href={fields.website}>
+            {fields.website}
           </ContactItem>
         </ul>
       </CvCell>
 
       <CvCell className="summary">
         <p className="title">Professional summary</p>
-        <p>{!data.summary ? DUMMY.summary : data.summary}</p>
+        <p>{fields.summary}</p>
       </CvCell>
     </CvBlock>
   );
