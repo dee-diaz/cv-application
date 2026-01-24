@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function Input({ as: Component = 'input', label, id, onChange, ...rest }) {
   return (
     <label>
