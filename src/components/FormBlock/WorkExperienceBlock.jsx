@@ -136,6 +136,7 @@ function JobList({ jobs, onEdit }) {
 }
 
 function JobItem({ jobId, jobTitle, company, startDate, endDate, onEdit }) {
+  const ariaLabel = `Edit ${jobTitle} position`;
   return (
     <li className="job-item">
       <div>
@@ -144,7 +145,7 @@ function JobItem({ jobId, jobTitle, company, startDate, endDate, onEdit }) {
         <p className="dates">{`${startDate} - ${endDate}`}</p>
       </div>
 
-      <button type="button" onClick={() => onEdit(jobId)} aria-label="Edit job">
+      <button type="button" onClick={() => onEdit(jobId)} aria-label={ariaLabel}>
         <svg
           width="20"
           height="20"
