@@ -2,6 +2,7 @@ import ContactItem from './ContactItem';
 import Icons from './Icons';
 import { CvBlock, CvCell } from './Cv';
 import { FORM_BLOCKS, DUMMY } from '../../config/cvForm';
+import { normalizeUrl } from '../../utilities/utils';
 
 export default function GeneralInfoBlock({ data, touchedFields }) {
   let fields = {
@@ -50,10 +51,10 @@ export default function GeneralInfoBlock({ data, touchedFields }) {
       </CvCell>
       <CvCell className="contact-info r-edge">
         <ul>
-          <ContactItem icon={Icons.LinkedIn} href={fields.linkedIn}>
+          <ContactItem icon={Icons.LinkedIn} href={normalizeUrl(fields.linkedIn)}>
             {fields.linkedIn}
           </ContactItem>
-          <ContactItem icon={Icons.Website} href={fields.website}>
+          <ContactItem icon={Icons.Website} href={normalizeUrl(fields.website)}>
             {fields.website}
           </ContactItem>
         </ul>
