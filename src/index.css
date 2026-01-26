@@ -160,25 +160,6 @@ fieldset, legend {
   outline-offset: calc(2px * -1);
 }
 
-@supports (position-anchor: --focus) and (inset: anchor(inside, 0)) {
-  *:focus-visible {
-    outline: none;
-    anchor-name: --focus;
-  }
-
-  html::after {
-    content: "";
-    position: fixed;
-    position-anchor: --focus;
-    inset: anchor(inside, 0);
-    outline: 3px solid oklch(51.1% 0.262 276.966);
-    outline-offset: calc(2px * -1);
-    transition: .4s;
-    pointer-events: none;
-    z-index: 99999;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
