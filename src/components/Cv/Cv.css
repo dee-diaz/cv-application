@@ -4,6 +4,12 @@
 }
 
 @media (min-width: 992px) {
+  .cv {
+    visibility: visible;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .cv-block {
     border: 1px solid var(--clr-border);
     display: none;
@@ -17,12 +23,6 @@
       border-top: none;
       border-left: none;
     }
-  }
-
-  .cv {
-    visibility: visible;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .cv-block {
@@ -194,5 +194,14 @@
         }
       }
     }
+  }
+}
+
+@media print {
+  .cv {
+    visibility: visible;
+    width: calc(210mm / 0.7);
+    transform: scale(0.7);
+    transform-origin: top left;
   }
 }
