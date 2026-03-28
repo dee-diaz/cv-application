@@ -4,8 +4,26 @@ import { CvBlock, CvCell } from './Cv';
 import { FORM_BLOCKS, DUMMY } from '../../config/cvForm';
 import { normalizeUrl } from '../../utilities/utils';
 
-export default function GeneralInfoBlock({ data, touchedFields }) {
-  let fields = {
+interface GeneralInfoData {
+  firstName?: string;
+  lastName?: string;
+  role?: string;
+  city?: string;
+  phone?: string;
+  email?: string;
+  linkedIn?: string;
+  website?: string;
+  summary?: string;
+  photoUrl?: string;
+}
+
+interface GeneralInfoBlockProps {
+  data: GeneralInfoData;
+  touchedFields: Record<string, boolean>;
+}
+
+export default function GeneralInfoBlock({ data, touchedFields }: GeneralInfoBlockProps) {
+  let fields: Required<Omit<GeneralInfoData, 'photoUrl'>> & { photoUrl?: string } = {
     firstName: !data.firstName ? DUMMY.firstName : data.firstName,
     lastName: !data.lastName ? DUMMY.lastName : data.lastName,
     role: !data.role ? DUMMY.role : data.role,
@@ -18,7 +36,9 @@ export default function GeneralInfoBlock({ data, touchedFields }) {
   };
 
   Object.keys(touchedFields).forEach((field) => {
-    if (!data[field]) fields[field] = '';
+    if (!data[field as keyof GeneralInfoData]) {
+      (fields as Record<string, string>)[field] = '';
+    }
   });
 
   return (
@@ -29,7 +49,7 @@ export default function GeneralInfoBlock({ data, touchedFields }) {
       </CvCell>
 
       <CvCell className="photo">
-        <img src={data.photoUrl || "/photo.webp"} alt="Photo of a candidate" />
+        <img src={data.photoUrl || '/photo.webp'} alt="Photo of a candidate" />
       </CvCell>
 
       <CvCell className="cell-title">
@@ -38,20 +58,17 @@ export default function GeneralInfoBlock({ data, touchedFields }) {
 
       <CvCell className="contact-info">
         <ul>
-          <ContactItem icon={Icons.Location}>
-            {fields.city}
-          </ContactItem>
-          <ContactItem icon={Icons.Phone}>
-            {fields.phone}
-          </ContactItem>
-          <ContactItem icon={Icons.Email}>
-            {fields.email}
-          </ContactItem>
+          <ContactItem icon={Icons.Location}>{fields.city}</ContactItem>
+          <ContactItem icon={Icons.Phone}>{fields.phone}</ContactItem>
+          <ContactItem icon={Icons.Email}>{fields.email}</ContactItem>
         </ul>
       </CvCell>
       <CvCell className="contact-info r-edge">
         <ul>
-          <ContactItem icon={Icons.LinkedIn} href={normalizeUrl(fields.linkedIn)}>
+          <ContactItem
+            icon={Icons.LinkedIn}
+            href={normalizeUrl(fields.linkedIn)}
+          >
             {fields.linkedIn}
           </ContactItem>
           <ContactItem icon={Icons.Website} href={normalizeUrl(fields.website)}>

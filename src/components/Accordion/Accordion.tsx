@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import './Accordion.css';
 
-export default function Accordion({ headerTitle, children }) {
+interface AccordionProps {
+  headerTitle: string;
+  children: React.ReactNode;
+}
+
+export default function Accordion({ headerTitle, children }: AccordionProps) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  function handleClick() {
+  function handleClick(): void {
     setIsCollapsed(!isCollapsed);
   }
 

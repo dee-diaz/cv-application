@@ -1,5 +1,14 @@
 import { createShortId } from '../utilities/utils';
 
+type FieldConfig = {
+  as: 'input' | 'textarea';
+  label: string;
+  id: string;
+  type?: string;
+  placeholder?: string;
+  rows?: number;
+};
+
 export const FORM_BLOCKS = {
   GENERAL: 'General',
   WORK_EXPERIENCE: 'Work experience',
@@ -71,7 +80,7 @@ export const FIELDS_GENERAL = {
     placeholder:
       '2–3 sentences summarizing your role, experience, and what you do best',
   },
-};
+} satisfies Record<string, FieldConfig>;;
 
 export const FIELDS_EXPERIENCE = {
   JOB_TITLE: {
@@ -109,7 +118,7 @@ export const FIELDS_EXPERIENCE = {
     id: 'jobEndDate',
     placeholder: 'Present',
   },
-};
+} satisfies Record<string, FieldConfig>;
 
 export const FIELDS_EDUCATION = {
   DEGREE: {
@@ -140,7 +149,7 @@ export const FIELDS_EDUCATION = {
     id: 'eduEndYear',
     placeholder: '2017',
   },
-};
+} satisfies Record<string, FieldConfig>;
 
 export const FIELDS_SKILLS = {
   SKILLS: {
@@ -149,7 +158,7 @@ export const FIELDS_SKILLS = {
     id: 'skills',
     placeholder: 'JavaScript, React, CSS, Git, Figma',
   },
-};
+} satisfies Record<string, FieldConfig>;
 
 export const BTN_TYPES = {
   SAVE: 'Save',
@@ -157,7 +166,7 @@ export const BTN_TYPES = {
   DELETE: 'Delete',
   ADD: 'Add experience',
   EDIT: 'Edit',
-};
+} as const;
 
 export const initialObj = {
   image: null,

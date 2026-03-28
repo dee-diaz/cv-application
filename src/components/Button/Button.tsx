@@ -1,7 +1,21 @@
 import './Button.css';
 import { BTN_TYPES } from '../../config/cvForm';
 
-export function Button({ type = 'button', className, btnText, onClick }) {
+type BtnType = 'button' | 'submit' | 'reset';
+
+interface ButtonProps {
+  type?: BtnType;
+  className?: string;
+  btnText: string;
+  onClick?: () => void;
+}
+
+export function Button({
+  type = 'button',
+  className,
+  btnText,
+  onClick,
+}: ButtonProps) {
   let icon;
 
   switch (btnText) {
@@ -88,7 +102,11 @@ export function Button({ type = 'button', className, btnText, onClick }) {
   );
 }
 
-export function DownloadButton({ onClick }) {
+interface DownloadButtonProps {
+  onClick: () => void;
+}
+
+export function DownloadButton({ onClick }: DownloadButtonProps) {
   return (
     <button className="btn-download" type="button" onClick={onClick}>
       <span>Download CV</span>

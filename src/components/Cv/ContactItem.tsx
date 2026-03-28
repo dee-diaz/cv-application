@@ -1,4 +1,11 @@
-export default function ContactItem({ icon: Icon, children, href }) {
+interface ContactItemProps {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  children: React.ReactNode;
+  href?: string;
+}
+
+
+export default function ContactItem({ icon: Icon, children, href }: ContactItemProps) {
   const content = (
     <>
       <Icon />

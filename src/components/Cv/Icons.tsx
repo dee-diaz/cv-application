@@ -1,4 +1,15 @@
-const Icons = {
+import { ReactElement } from 'react';
+
+
+interface IconsMap {
+  Location: () => ReactElement;
+  Phone: () => ReactElement;
+  Email: () => ReactElement;
+  LinkedIn: () => ReactElement;
+  Website: () => ReactElement;
+}
+
+const Icons: IconsMap = {
   Location: () => (
     <svg
       width="16"

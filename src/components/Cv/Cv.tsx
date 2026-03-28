@@ -4,8 +4,17 @@ import GeneralInfoBlock from './GeneralInfoBlock';
 import WorkExperienceBlock from './WorkExperienceBlock';
 import EducationBlock from './EducationBlock';
 import SkillsBlock from './SkillsBlock';
+import { DataType } from "../../types/data";
+import { Job } from "../../types/job";
 
-const Cv = forwardRef(function Cv(
+interface CvProps {
+  data: DataType;
+  jobs: Job[];
+  currentJob: Job;
+  touchedFields: Record<string, boolean>;
+}
+
+const Cv = forwardRef<HTMLDivElement, CvProps>(function Cv(
   { data, jobs, currentJob, touchedFields },
   ref
 ) {
@@ -60,12 +69,23 @@ const Cv = forwardRef(function Cv(
 
 export default Cv;
 
-export function CvBlock({ blockName, children }) {
+interface CvBlockProps {
+  blockName: string;
+  children: React.ReactNode;
+}
+
+export function CvBlock({ blockName, children }: CvBlockProps) {
   const blockId = blockName.toLowerCase().replace(' ', '-');
   return <div className={`cv-block ${blockId}`}>{children}</div>;
 }
 
-export function CvCell({ id, className, children }) {
+interface CvCellProps {
+  id?: string;
+  className?: string;
+  children: React.ReactNode;
+}
+
+export function CvCell({ id, className, children }: CvCellProps) {
   return (
     <div id={id} className={`cv-cell ${className}`}>
       {children}
