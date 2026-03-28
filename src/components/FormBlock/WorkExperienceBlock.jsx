@@ -1,8 +1,9 @@
 import './FormBlock.css';
 import { useState } from 'react';
 import { Button } from '../Button/Button.jsx';
-import { BTN_TYPES } from '../../config/cvForm';
+import { BTN_TYPES } from '../../config/cvForm.ts';
 import Input from './Input.jsx';
+
 
 export function WorkExperienceBlock({
   inputs,
@@ -145,7 +146,11 @@ function JobItem({ jobId, jobTitle, company, startDate, endDate, onEdit }) {
         <p className="dates">{`${startDate} - ${endDate}`}</p>
       </div>
 
-      <button type="button" onClick={() => onEdit(jobId)} aria-label={ariaLabel}>
+      <button
+        type="button"
+        onClick={() => onEdit(jobId)}
+        aria-label={ariaLabel}
+      >
         <svg
           width="20"
           height="20"

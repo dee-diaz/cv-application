@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import './App.css';
-import Header from './components/Header/Header.jsx';
-import Hint from './components/Hint/Hint.jsx';
-import Layout from './components/Layout/Layout.jsx';
-import SimpleFormBlock from './components/FormBlock/SimpleFormBlock.jsx';
-import { WorkExperienceBlock } from './components/FormBlock/WorkExperienceBlock.jsx';
-import Accordion from './components/Accordion/Accordion.jsx';
-import Cv from './components/Cv/Cv.jsx';
+import Header from './components/Header/Header';
+import Hint from './components/Hint/Hint';
+import Layout from './components/Layout/Layout';
+import SimpleFormBlock from './components/FormBlock/SimpleFormBlock';
+import { WorkExperienceBlock } from './components/FormBlock/WorkExperienceBlock';
+import Accordion from './components/Accordion/Accordion';
+import Cv from './components/Cv/Cv';
 import {
   FIELDS_GENERAL,
   FIELDS_EXPERIENCE,
@@ -17,8 +17,8 @@ import {
   FORM_BLOCKS,
   initialObj,
   jobInitial,
-} from './config/cvForm.js';
-import Footer from './components/Footer/Footer.jsx';
+} from './config/cvForm';
+import Footer from './components/Footer/Footer.js';
 import { createShortId } from './utilities/utils.js';
 
 function App() {
@@ -31,10 +31,10 @@ function App() {
 
   const handlePrint = useReactToPrint({
     contentRef: cvRef,
-    documentTitle: "cv",
+    documentTitle: 'cv',
   });
 
-  function handlePhotoChange(e) {
+  function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -42,13 +42,13 @@ function App() {
     setFormData((prev) => ({ ...prev, photoUrl: url }));
   }
 
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const inputId = e.target.id;
     setFormData((prev) => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
-  function handleJobSubmit(jobObj) {
+  function handleJobSubmit(jobObj: { id: string }): void {
     if (!jobObj.id) {
       const newJob = { ...jobObj, id: createShortId() };
       setJobs((prev) => [...prev, newJob]);
@@ -66,20 +66,20 @@ function App() {
     setCurrentJobDraft(jobInitial);
   }
 
-  function handleJobChange(e) {
+  function handleJobChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const inputId = e.target.id;
     setCurrentJobDraft((prev) => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
-  function handleEditJob(jobId) {
-    const job = jobs.find((j) => j.id === jobId);
+  function handleEditJob(jobId: string): void {
+    const job = jobs.find((j: { id: string }) => j.id === jobId);
     if (!job) return;
     setCurrentJobDraft({ ...job });
   }
 
-  function handleDeleteJob(jobId) {
-    setJobs((prev) => prev.filter((job) => job.id !== jobId));
+  function handleDeleteJob(jobId: string): void {
+    setJobs((prev) => prev.filter((job: { id: string }) => job.id !== jobId));
     setCurrentJobDraft(jobInitial);
   }
 

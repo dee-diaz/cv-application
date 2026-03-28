@@ -157,7 +157,7 @@ export const BTN_TYPES = {
   DELETE: 'Delete',
   ADD: 'Add experience',
   EDIT: 'Edit',
-};
+} as const;
 
 export const initialObj = {
   image: null,

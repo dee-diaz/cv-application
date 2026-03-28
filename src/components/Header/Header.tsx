@@ -1,8 +1,12 @@
 // import { useState } from 'react';
 import './Header.css';
-import { DownloadButton } from '../Button/Button.jsx';
+import { DownloadButton } from '../Button/Button';
 
-export default function Header({ onDownload }) {
+interface HeaderProps {
+  onDownload: () => void;
+}
+
+export default function Header({ onDownload }: HeaderProps) {
   const titleText = window.innerWidth < 992 ? 'CV' : 'Turn your CV into a yes';
   return (
     <header className="header">

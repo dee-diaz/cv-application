@@ -1,17 +1,29 @@
 import { CvBlock, CvCell } from './Cv';
 import { FORM_BLOCKS, DUMMY_JOBS, jobInitial } from '../../config/cvForm';
+import { Job } from '../../types/job';
 
-export default function WorkExperienceBlock({ jobs, currentJob, touchedFields }) {
+interface WorkExperienceBlockProps {
+  jobs: Job[];
+  currentJob: Job;
+  touchedFields: Record<string, boolean>;
+}
+
+export default function WorkExperienceBlock({
+  jobs,
+  currentJob,
+  touchedFields,
+}: WorkExperienceBlockProps) {
   const hasCurrentJobData = Object.values(currentJob).some(
     (val) => val && val.toString().trim() !== '',
   );
 
-  let jobsToRender =
+  let jobsToRender: Job[] =
     jobs.length > 0 ? jobs : hasCurrentJobData ? [currentJob] : DUMMY_JOBS;
-  
-  Object.keys(jobInitial).forEach(inputId => {
-    if (touchedFields[inputId] && !hasCurrentJobData && jobs.length === 0) jobsToRender = [{}];
-  })
+
+  Object.keys(jobInitial).forEach((inputId) => {
+    if (touchedFields[inputId] && !hasCurrentJobData && jobs.length === 0)
+      jobsToRender = [{}];
+  });
 
   return (
     <CvBlock blockName={FORM_BLOCKS.WORK_EXPERIENCE}>
@@ -35,8 +47,8 @@ function WorkItem({
   a1,
   a2,
   a3,
-}) {
-  const achievements = [a1, a2, a3].filter(Boolean);
+}: Job) {
+  const achievements = [a1, a2, a3].filter(Boolean) as string[];
 
   return (
     <CvCell className="work-block">

@@ -1,4 +1,9 @@
-export default function ImageUpload({ formId, onPhotoChange }) {
+interface ImageUploadProps {
+  formId: string;
+  onPhotoChange: () => void;
+}
+
+export default function ImageUpload({ formId, onPhotoChange }: ImageUploadProps) {
   return (
     <div className="img-upload">
       <div>

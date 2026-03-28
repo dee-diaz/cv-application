@@ -1,8 +1,13 @@
 import { CvBlock, CvCell } from './Cv';
 import { FORM_BLOCKS, DUMMY } from '../../config/cvForm';
 
-export default function SkillsBlock({ skills, touchedFields }) {
-  let s = !skills ? DUMMY.skills : skills;
+interface SkillsBlockProps {
+  skills?: string;
+  touchedFields: Record<string, boolean>;
+}
+
+export default function SkillsBlock({ skills, touchedFields }: SkillsBlockProps) {
+  let s: string = !skills ? DUMMY.skills : skills;
   if (!skills && touchedFields.skills) s = '';
 
   return (
