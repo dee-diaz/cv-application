@@ -18,8 +18,8 @@ import {
   initialObj,
   jobInitial,
 } from './config/cvForm';
-import Footer from './components/Footer/Footer.js';
-import { createShortId } from './utilities/utils.js';
+import Footer from './components/Footer/Footer';
+import { createShortId } from './utilities/utils';
 
 function App() {
   const [formData, setFormData] = useState(initialObj);

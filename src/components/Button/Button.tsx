@@ -4,10 +4,10 @@ import { BTN_TYPES } from '../../config/cvForm';
 type BtnType = 'button' | 'submit' | 'reset';
 
 interface ButtonProps {
-  type: BtnType;
-  className: string;
+  type?: BtnType;
+  className?: string;
   btnText: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export function Button({

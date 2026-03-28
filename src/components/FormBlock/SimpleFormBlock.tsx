@@ -8,16 +8,10 @@ interface FormInput extends Omit<InputProps<'input'>, 'onChange'> {
   id: string;
 }
 
-type InputsMap = Record<string, FormInput>;
-
-
-
 interface SimpleFormBlockProps {
   title: string;
-  inputs: InputsMap;
-  onChange?: React.ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  >;
+  inputs: Record<string, FormInput>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onSubmit?: (data: Record<string, FormDataEntryValue>) => void;
   onPhotoChange?: (file: File | null) => void;
 }
@@ -32,7 +26,7 @@ export default function SimpleFormBlock({
   const formId = title.toLowerCase().replace(/\s+/g, '-');
   const inputsArr = Object.values(inputs);
 
-  function handleSubmit(e: SubmitEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const obj = Object.fromEntries(data.entries());

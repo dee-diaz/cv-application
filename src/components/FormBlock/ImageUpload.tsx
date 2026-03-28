@@ -1,9 +1,15 @@
 interface ImageUploadProps {
   formId: string;
-  onPhotoChange: () => void;
+  onPhotoChange?: (file: File | null) => void;
 }
 
 export default function ImageUpload({ formId, onPhotoChange }: ImageUploadProps) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0] ?? null;
+    onPhotoChange?.(file);
+  }
+
+
   return (
     <div className="img-upload">
       <div>
@@ -37,7 +43,7 @@ export default function ImageUpload({ formId, onPhotoChange }: ImageUploadProps)
           />
         </svg>
         Upload
-        <input type="file" accept="image/*" form={formId} hidden onChange={onPhotoChange} />
+        <input type="file" accept="image/*" form={formId} hidden onChange={handleChange} />
       </label>
     </div>
   );

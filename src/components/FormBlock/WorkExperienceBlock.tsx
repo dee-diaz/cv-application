@@ -1,9 +1,42 @@
 import './FormBlock.css';
 import { useState } from 'react';
-import { Button } from '../Button/Button.jsx';
-import { BTN_TYPES } from '../../config/cvForm.ts';
-import Input from './Input.jsx';
+import { Button } from '../Button/Button';
+import { BTN_TYPES } from '../../config/cvForm';
+import Input from './Input';
 
+interface Job {
+  id?: string | number;
+  jobTitle?: string;
+  company?: string;
+  jobStartDate?: string;
+  jobEndDate?: string;
+  companyLocation?: string;
+  a1?: string;
+  a2?: string;
+  a3?: string;
+  [key: string]: string | number | undefined;
+}
+
+interface FormInput {
+  id: string;
+  label?: string;
+  [key: string]: unknown;
+}
+
+interface FormMode {
+  isFormMode: boolean;
+  isEditMode: boolean;
+}
+
+interface WorkExperienceBlockProps {
+  inputs: Record<string, FormInput>;
+  savedJobs: Job[];
+  currentJob: Job;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onSubmit?: (job: Job) => void;
+  onEditJob?: (jobId: string | number) => void;
+  onDeleteJob?: (jobId: string | number | undefined) => void;
+}
 
 export function WorkExperienceBlock({
   inputs,
@@ -13,25 +46,25 @@ export function WorkExperienceBlock({
   onSubmit,
   onEditJob,
   onDeleteJob,
-}) {
-  const [formMode, setFormMode] = useState({
+}: WorkExperienceBlockProps) {
+  const [formMode, setFormMode] = useState<FormMode>({
     isFormMode: true,
     isEditMode: false,
   });
   const inputsArr = Object.values(inputs);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     onSubmit?.(currentJob);
     setFormMode({ isFormMode: false, isEditMode: false });
   }
 
-  function handleEdit(jobId) {
+  function handleEdit(jobId: string | number): void {
     setFormMode({ isFormMode: true, isEditMode: true });
     onEditJob?.(jobId);
   }
 
-  function handleDelete() {
+  function handleDelete(): void {
     onDeleteJob?.(currentJob.id);
     setFormMode({ isFormMode: false, isEditMode: false });
   }
@@ -94,7 +127,12 @@ export function WorkExperienceBlock({
   );
 }
 
-function Achievements({ currentJob, onChange }) {
+interface AchievementsProps {
+  currentJob: Job;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+}
+
+function Achievements({ currentJob, onChange }: AchievementsProps) {
   return (
     <fieldset className="field-group" aria-describedby="achievements-help">
       <legend>Achievements or responsibilities</legend>
@@ -118,7 +156,12 @@ function Achievements({ currentJob, onChange }) {
   );
 }
 
-function JobList({ jobs, onEdit }) {
+interface JobListProps {
+  jobs: Job[];
+  onEdit: (jobId: string | number) => void;
+}
+
+function JobList({ jobs, onEdit }: JobListProps) {
   return (
     <ul>
       {jobs.map((job, index) => (
@@ -136,7 +179,23 @@ function JobList({ jobs, onEdit }) {
   );
 }
 
-function JobItem({ jobId, jobTitle, company, startDate, endDate, onEdit }) {
+interface JobItemProps {
+  jobId: string | number;
+  jobTitle?: string;
+  company?: string;
+  startDate?: string;
+  endDate?: string;
+  onEdit: (jobId: string | number) => void;
+}
+
+function JobItem({
+  jobId,
+  jobTitle,
+  company,
+  startDate,
+  endDate,
+  onEdit,
+}: JobItemProps) {
   const ariaLabel = `Edit ${jobTitle} position`;
   return (
     <li className="job-item">
