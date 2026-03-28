@@ -4,8 +4,15 @@ import { FORM_BLOCKS } from '../../config/cvForm';
 import ImageUpload from './ImageUpload';
 import type { InputProps } from './Input';
 
-interface FormInput extends Omit<InputProps<'input'>, 'onChange'> {
+interface FormInput {
   id: string;
+  label?: string;
+  as?: 'input' | 'textarea';
+  placeholder?: string;
+  type?: string;
+  name?: string;
+  rows?: number;
+  [key: string]: unknown;
 }
 
 interface SimpleFormBlockProps {

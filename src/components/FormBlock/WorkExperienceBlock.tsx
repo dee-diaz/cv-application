@@ -3,19 +3,7 @@ import { useState } from 'react';
 import { Button } from '../Button/Button';
 import { BTN_TYPES } from '../../config/cvForm';
 import Input from './Input';
-
-interface Job {
-  id?: string | number;
-  jobTitle?: string;
-  company?: string;
-  jobStartDate?: string;
-  jobEndDate?: string;
-  companyLocation?: string;
-  a1?: string;
-  a2?: string;
-  a3?: string;
-  [key: string]: string | number | undefined;
-}
+import { Job } from '../../types/job';
 
 interface FormInput {
   id: string;

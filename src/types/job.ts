@@ -1,5 +1,5 @@
 export interface Job {
-  id?: string | number;
+  id?: string;
   jobTitle?: string;
   company?: string;
   jobStartDate?: string;
@@ -8,4 +8,5 @@ export interface Job {
   a1?: string;
   a2?: string;
   a3?: string;
+  [key: string]: string | undefined;
 }

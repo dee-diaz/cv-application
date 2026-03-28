@@ -20,37 +20,36 @@ import {
 } from './config/cvForm';
 import Footer from './components/Footer/Footer';
 import { createShortId } from './utilities/utils';
+import { Job } from './types/job';
 
 function App() {
   const [formData, setFormData] = useState(initialObj);
-  const [jobs, setJobs] = useState([]);
-  const [currentJobDraft, setCurrentJobDraft] = useState(jobInitial);
-  const [touchedFields, setTouchedFields] = useState({});
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [currentJobDraft, setCurrentJobDraft] = useState<Job>(jobInitial);
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
 
-  const cvRef = useRef(null);
+  const cvRef = useRef<HTMLDivElement>(null);
 
   const handlePrint = useReactToPrint({
     contentRef: cvRef,
     documentTitle: 'cv',
   });
 
-  function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    const file = e.target.files?.[0];
+  function handlePhotoChange(file: File | null): void {
     if (!file) return;
-
     const url = URL.createObjectURL(file);
     setFormData((prev) => ({ ...prev, photoUrl: url }));
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const inputId = e.target.id;
     setFormData((prev) => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
-  function handleJobSubmit(jobObj: { id: string }): void {
+  function handleJobSubmit(jobObj: Job): void {
     if (!jobObj.id) {
-      const newJob = { ...jobObj, id: createShortId() };
+      const newJob: Job = { ...jobObj, id: createShortId() };
       setJobs((prev) => [...prev, newJob]);
     } else {
       setJobs((prev) => {
@@ -66,20 +65,21 @@ function App() {
     setCurrentJobDraft(jobInitial);
   }
 
-  function handleJobChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  function handleJobChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const inputId = e.target.id;
     setCurrentJobDraft((prev) => ({ ...prev, [inputId]: e.target.value }));
     setTouchedFields((prev) => ({ ...prev, [inputId]: true }));
   }
 
-  function handleEditJob(jobId: string): void {
-    const job = jobs.find((j: { id: string }) => j.id === jobId);
+  function handleEditJob(jobId: string | number): void {
+    const job = jobs.find((j) => j.id === String(jobId));
     if (!job) return;
     setCurrentJobDraft({ ...job });
   }
 
-  function handleDeleteJob(jobId: string): void {
-    setJobs((prev) => prev.filter((job: { id: string }) => job.id !== jobId));
+  function handleDeleteJob(jobId: string | number | undefined): void {
+    if (jobId === undefined) return;
+    setJobs((prev) => prev.filter((job) => job.id !== String(jobId)));
     setCurrentJobDraft(jobInitial);
   }
 
